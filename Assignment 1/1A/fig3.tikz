@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[latent] (x) {$x$};
+  \node[latent, above=of x] (mu) {$\mu$};
+  \node[latent, right=of mu] (tau) {$\tau$};
+  \node[above=of mu] (mu_0) {$\mu_0$};
+  \node[left=of mu_0] (lambda_0) {$\lambda_0$};
+  \node[above=of tau] (a_0) {$a_0$};
+  \node[right=of a_0] (b_0) {$b_0$};
+
+  % Connect nodes
+  \edge {mu} {x}
+  \edge {tau} {x}
+  \edge {a_0} {tau}
+  \edge {b_0} {tau}
+  \edge {lambda_0} {mu}
+  \edge {mu_0} {mu}
+
+  % Plates
+  \plate [inner xsep=0.3cm, inner ysep=0.3cm] {plate1} {(x)} {$N$}
+
+\end{tikzpicture}
