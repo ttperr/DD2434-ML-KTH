@@ -4,6 +4,7 @@
 \usepackage{lastpage}
 \usepackage[a4paper]{geometry} % Margin
 \usepackage{hyperref} % Links
+\usepackage{amsmath} % Math
 \usepackage{tikz} % Graph
 \usetikzlibrary{bayesnet}
 \usetikzlibrary{positioning}
@@ -38,6 +39,21 @@
 \newpage
 
 \section{Exponential Family}
+
+\subsection{Question 1.1}
+
+\begin{equation}
+    \begin{split}
+        p(x|\eta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))           \\
+                  & = h(x) \exp(\eta(\lambda) \cdot T(x) - A(\eta(\lambda))) \\
+                  & = h(x) \exp(\log \lambda \cdot x - A(\log \lambda))      \\
+                  & = h(x) \exp(\log \lambda \cdot x - \lambda)              \\
+                  & = h(x) \exp(\log \lambda \cdot x) \exp(-\lambda)         \\
+                  & = e^{-\lambda} \frac{\lambda^x}{x!}
+    \end{split}
+\end{equation}
+
+We can see that the distribution correspond to a Poisson distribution of parameter $\lambda$.
 
 \section{Dependencies in a Directed Graphical Model}
 
