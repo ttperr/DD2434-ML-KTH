@@ -55,6 +55,20 @@
 
 We can see that the distribution correspond to a Poisson distribution of parameter $\lambda$.
 
+\subsection{Question 1.2}
+
+\begin{equation}
+    \begin{split}
+        p(x|\theta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))                                             \\
+                    & = \exp(\eta([\alpha, \beta]) \cdot [\log x, x] - A(\alpha - 1, -\beta))                    \\
+                    & = \exp([\alpha - 1, -\beta] \cdot [\log x, x] - \log \Gamma(\alpha) + \alpha \log(-\beta)) \\
+                    & = \exp((\alpha - 1) \log x - \beta x - \log \Gamma(\alpha) + \alpha \log(-\beta))          \\
+                    & = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\beta x}
+    \end{split}
+\end{equation}
+
+We can see that the distribution correspond to a Gamma distribution of parameters $\alpha$ and $\beta$.
+
 \section{Dependencies in a Directed Graphical Model}
 
 \begin{figure}[h]
