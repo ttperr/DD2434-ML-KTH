@@ -44,12 +44,12 @@
 
 \begin{equation}
     \begin{split}
-        p(x|\eta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))           \\
-                  & = h(x) \exp(\eta(\lambda) \cdot T(x) - A(\eta(\lambda))) \\
-                  & = h(x) \exp(\log \lambda \cdot x - A(\log \lambda))      \\
-                  & = h(x) \exp(\log \lambda \cdot x - \lambda)              \\
-                  & = h(x) \exp(\log \lambda \cdot x) \exp(-\lambda)         \\
-                  & = e^{-\lambda} \frac{\lambda^x}{x!}
+        p(x|\theta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))           \\
+                    & = h(x) \exp(\eta(\lambda) \cdot T(x) - A(\eta(\lambda))) \\
+                    & = h(x) \exp(\log \lambda \cdot x - A(\log \lambda))      \\
+                    & = h(x) \exp(\log \lambda \cdot x - \lambda)              \\
+                    & = h(x) \exp(\log \lambda \cdot x) \exp(-\lambda)         \\
+                    & = e^{-\lambda} \frac{\lambda^x}{x!}
     \end{split}
 \end{equation}
 
