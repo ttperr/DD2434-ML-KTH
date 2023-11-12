@@ -56,7 +56,7 @@
     \end{split}
 \end{equation}
 
-We can see that the distribution correspond to a Poisson distribution of parameter $\lambda$.
+We can see that the distribution correspond to a \underline{Poisson distribution of parameter $\lambda$}.
 
 \subsection{Question 1.2}
 
@@ -70,7 +70,49 @@ We can see that the distribution correspond to a Poisson distribution of paramet
     \end{split}
 \end{equation}
 
-We can see that the distribution correspond to a Gamma distribution of parameters $\alpha$ and $\beta$.
+We can see that the distribution correspond to a \underline{Gamma distribution of parameters $\alpha$ and $\beta$}.
+
+\subsection{Question 1.3}
+
+\begin{equation}
+    \begin{split}
+        p(x|\theta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))                                                                                                 \\
+                    & = \frac{\exp(\eta([\mu, \sigma^2]) \cdot [x, x^2] - A(\eta([\mu, \sigma^2])))}{\sqrt{2 \pi}}                                                   \\
+                    & = \frac{\exp([\frac{\mu}{\sigma^2}, - \frac{1}{2 \sigma^2}] \cdot [x, x^2] - A([\frac{\mu}{\sigma^2}, - \frac{1}{2 \sigma^2}]))}{\sqrt{2 \pi}} \\
+                    & = \frac{\exp(\frac{\mu x}{\sigma^2} - \frac{x^2}{2 \sigma^2} - \frac{\mu^2}{2 \sigma^2} - \log \sigma)}{\sqrt{2 \pi}}                          \\
+                    & = \frac{\exp(- \frac{(x - \mu)^2}{2 \sigma^2})}{\sigma \sqrt{2 \pi}}
+    \end{split}
+\end{equation}
+
+We can see that the distribution correspond to a \underline{Normal distribution of parameters $\mu$ and $\sigma^2$}.
+
+\subsection{Question 1.4}
+
+\begin{equation}
+    \begin{split}
+        p(x|\theta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))                        \\
+                    & = 2 \exp(\eta(\lambda) \cdot x - A(\eta(\lambda)))                    \\
+                    & = 2 \exp(- \lambda x - A(-\lambda))                                   \\
+                    & = 2 \exp\left(- \lambda x + \log\left(\frac{\lambda}{2}\right)\right) \\
+                    & = \lambda e^{- \lambda x}
+    \end{split}
+\end{equation}
+
+We can see that the distribution correspond to a \underline{Exponential distribution of parameter $\lambda$}.
+
+\subsection{Question 1.5}
+
+\begin{equation}
+    \begin{split}
+        p(x|\theta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))                                                                                     \\
+                    & = \exp(\eta([\psi_1, \psi_2]) \cdot [\log x, \log (1 - x)] - A(\eta([\psi_1, \psi_2])))                                            \\
+                    & = \exp([\psi_1 - 1, \psi_2 - 1] \cdot [\log x, \log (1 - x)] - A([\psi_1 - 1, \psi_2 - 1]))                                        \\
+                    & = \exp((\psi_1 - 1) \log x + (\psi_2 - 1) \log (1 - x) - \log \Gamma(\psi_1) - \log \Gamma(\psi_2) + \log \Gamma(\psi_1 + \psi_2)) \\
+                    & = \frac{\Gamma(\psi_1 + \psi_2)}{\Gamma(\psi_1) \Gamma(\psi_2)} x^{\psi_1 - 1} (1 - x)^{\psi_2 - 1}
+    \end{split}
+\end{equation}
+
+We can see that the distribution correspond to a \underline{Beta distribution of parameters $\psi_1$ and $\psi_2$}.
 
 \section{Dependencies in a Directed Graphical Model}
 
