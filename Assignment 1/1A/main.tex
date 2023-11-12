@@ -4,6 +4,9 @@
 \usepackage{lastpage}
 \usepackage[a4paper]{geometry} % Margin
 \usepackage{hyperref} % Links
+\usepackage{tikz} % Graph
+\usetikzlibrary{bayesnet}
+\usetikzlibrary{positioning}
 
 \graphicspath{{images/}}
 
@@ -14,13 +17,13 @@
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
-\lhead{Assignment 1A \\ DD2434 - Machine Learning, Advanced}
+\lhead{Assignment 1A \\ DD2434 - Machine Learning, Advanced Course}
 \rhead{\authorFst \\ \authorSnd}
 \cfoot{\thepage \  / \pageref{LastPage}}
 \setlength{\headheight}{23pt}
 \setlength{\footskip}{70pt}
 
-\title{DD2434 - Machine Learning, Advanced \\ Assignment 1A}
+\title{DD2434 - Machine Learning, Advanced Course \\ Assignment 1A}
 \author{\authorFst \\ \emailFst \and \authorSnd \\ \emailSnd}
 \date{November 2023}
 
@@ -34,6 +37,22 @@
 
 \newpage
 
-\section{Introduction}
+\section{Exponential Family}
+
+\section{Dependencies in a Directed Graphical Model}
+
+\begin{figure}[h]
+    \centering
+    \input{fig1.tikz}
+    \caption{Graphical model of \href{https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf}{smooth LDA}.}
+    \label{fig:fig1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \input{fig2.tikz}
+    \caption{Graphical model of \href{https://aclanthology.org/D09-1026.pdf}{Labeled LDA}.}
+    \label{fig:fig2}
+\end{figure}
 
 \end{document}

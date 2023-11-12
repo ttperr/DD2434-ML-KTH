@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[latent] (theta) {$\theta_d$};
+  \node[latent, left=of theta] (alpha) {$\alpha$};
+
+  \node[latent, right=of theta] (z) {$Z_{d,n}$};
+  \node[latent, right=of z] (w) {$W_{d,n}$};
+  \node[latent, right=of w] (beta) {$\beta_k$};
+  \node[latent, right=of beta] (eta) {$\eta$};
+
+  % Connect nodes
+  \edge {alpha} {theta}
+  \edge {theta} {z}
+  \edge {z} {w}
+  \edge {beta} {w}
+  \edge {eta} {beta}
+
+  % Plates
+  \plate [inner xsep=0.3cm] {plate1} {(z)(w)} {$N$}
+  \plate [inner xsep=0.3cm] {plate2} {(theta)(z)(w)(plate1)} {$D$}
+  \plate [inner xsep=0.2cm, xshift=0.1cm] {plate3} {(beta)} {$K$}
+
+\end{tikzpicture}
