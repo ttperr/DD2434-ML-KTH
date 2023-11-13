@@ -19,7 +19,7 @@
     },
     postaction={decorate},
   },
-} % Red dot
+} % Red dot - place in [] just after \edge
 
 \graphicspath{{images/}}
 
@@ -73,10 +73,10 @@ We can see that the distribution correspond to a \underline{Poisson distribution
 
 \begin{equation}
     \begin{split}
-        p(x|\theta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))                                             \\
-                    & = \exp(\eta([\alpha, \beta]) \cdot [\log x, x] - A(\alpha - 1, -\beta))                    \\
-                    & = \exp([\alpha - 1, -\beta] \cdot [\log x, x] - \log \Gamma(\alpha) + \alpha \log(-\beta)) \\
-                    & = \exp((\alpha - 1) \log x - \beta x - \log \Gamma(\alpha) + \alpha \log(-\beta))          \\
+        p(x|\theta) & = h(x) \exp(\eta(\theta) \cdot T(x) - A(\eta))                                            \\
+                    & = \exp(\eta([\alpha, \beta]) \cdot [\log x, x] - A(\alpha - 1, -\beta))                   \\
+                    & = \exp([\alpha - 1, -\beta] \cdot [\log x, x] - \log \Gamma(\alpha) + \alpha \log(\beta)) \\
+                    & = \exp((\alpha - 1) \log x - \beta x - \log \Gamma(\alpha) + \alpha \log(\beta))          \\
                     & = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\beta x}
     \end{split}
 \end{equation}
@@ -129,14 +129,14 @@ We can see that the distribution correspond to a \underline{Beta distribution of
 
 \begin{figure}[H]
     \centering
-    \input{fig1.tikz}
+    \input{dgm_wording/fig1.tikz}
     \caption{Graphical model of \href{https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf}{smooth LDA}.}
     \label{fig:fig1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \input{fig2.tikz}
+    \input{dgm_wording/fig2.tikz}
     \caption{Graphical model of \href{https://aclanthology.org/D09-1026.pdf}{Labeled LDA}.}
     \label{fig:fig2}
 \end{figure}
@@ -145,7 +145,7 @@ We can see that the distribution correspond to a \underline{Beta distribution of
 
 \begin{figure}[H]
     \centering
-    \input{fig3.tikz}
+    \input{dgm_wording/fig3.tikz}
     \caption{DGM}
     \label{fig:fig3}
 \end{figure}
