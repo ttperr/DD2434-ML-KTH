@@ -9,6 +9,17 @@
 \usepackage{tikz} % Graph
 \usetikzlibrary{bayesnet}
 \usetikzlibrary{positioning}
+\usetikzlibrary{decorations.markings}
+
+\tikzset{
+  red dot edge/.style={
+    decoration={
+      markings,
+      mark=at position 0 with {\fill[red] circle (2pt);},
+    },
+    postaction={decorate},
+  },
+} % Red dot
 
 \graphicspath{{images/}}
 
