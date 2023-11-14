@@ -225,16 +225,16 @@ Then, we can write :
                        & \overset{+}{=} \frac{\mathbb{E}_{\tau}[\tau]}{2}\left(\lambda_0 (\mu - \mu_0) + \sum_{n=1}^{N}(x_n - \mu)^2\right)                                                                                                                 \\
                        & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left(\lambda_0\mu^2 - 2\lambda_0\mu\mu_0 + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2 - 2\mu\sum_{n=1}^{N}x_n + N\mu^2\right)                                                                      \\
                        & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left((\lambda_0 + N)\mu^2 - 2(\lambda_0\mu_0 + \sum_{n=1}^{N}x_n)\mu + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2\right)                                                                           \\
-                       & = - \frac{\mathbb{E}_\tau[\tau](\lambda_0 + N)}{2}\left(\mu^2 - 2\mu`\frac{\lambda_0\mu_0 + \sum_{n=1}^{N}x_n}{\lambda_0 + N} + \frac{\lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2}{\lambda_0 + N}\right)
+                       & = - \frac{\mathbb{E}_\tau[\tau](\lambda_0 + N)}{2}\left(\mu^2 - 2\mu\frac{\lambda_0\mu_0 + \sum_{n=1}^{N}x_n}{\lambda_0 + N} + \frac{\lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2}{\lambda_0 + N}\right)
     \end{split}
 \end{equation}
 
-Therefore we can conclude that $q^*(\mu) = \mathcal{N}(\mu|\mu', \lambda'^{-1})$ with :
+Therefore we can conclude that $q^*(\mu) = \mathcal{N}(\mu|\mu_N, \lambda_N^{-1})$ with :
 \begin{equation}
-    \mu'     = \frac{\lambda_0\mu_0 + \sum_{n=1}^{N}x_n}{\lambda_0 + N}
+    \mu_N     = \frac{\lambda_0\mu_0 + \sum_{n=1}^{N}x_n}{\lambda_0 + N}
 \end{equation}
 \begin{equation}
-    \lambda' = (\lambda_0 + N)\mathbb{E}[\tau]
+    \lambda_N = (\lambda_0 + N)\mathbb{E}[\tau]
 \end{equation}
 
 And for $\tau$ we have :
@@ -247,14 +247,14 @@ And for $\tau$ we have :
     \end{split}
 \end{equation}
 
-Therefore we can conclude that $q^*(\tau) = \text{Gam}(\tau|a', b')$ with :
+Therefore we can conclude that $q^*(\tau) = \text{Gam}(\tau|a_N, b_N)$ with :
 \begin{equation}
-    a' = a_0 + \frac{N}{2}
+    a_N = a_0 + \frac{N}{2}
 \end{equation}
 \begin{equation}
     \begin{split}
-        b' & = b_0 + \frac{1}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2 + \lambda_0(\mu - \mu_0)^2\right]                                                                                                     \\
-        b' & = b_0 + \frac{1}{2}\left(\sum_{n=1}^{N}x_n^2 + N\mathbb{E}_\mu[\mu^2] - 2\mathbb{E}_\mu[\mu]\sum_{n=1}^{N}x_n + \lambda_0\left(\mathbb{E}_\mu[\mu^2] + \mu_0^2 - 2\mu_0\mathbb{E}_\mu[\mu]\right)\right) \\
+        b_N & = b_0 + \frac{1}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2 + \lambda_0(\mu - \mu_0)^2\right]                                                                                                     \\
+        b_N & = b_0 + \frac{1}{2}\left(\sum_{n=1}^{N}x_n^2 + N\mathbb{E}_\mu[\mu^2] - 2\mathbb{E}_\mu[\mu]\sum_{n=1}^{N}x_n + \lambda_0\left(\mathbb{E}_\mu[\mu^2] + \mu_0^2 - 2\mu_0\mathbb{E}_\mu[\mu]\right)\right) \\
     \end{split}
 \end{equation}
 
@@ -268,9 +268,9 @@ The equation (10.24) in the Bishop is the mean-field approximation which is :
 We have also some formulas to detail :
 \begin{equation}
     \begin{split}
-        \mathbb{E}_\mu[\mu]   & = \mu'                        \\
-        \mathbb{E}_\mu[\mu^2] & = \frac{1}{\lambda'} + \mu'^2 \\
-        \mathbb{E}_\tau[\tau] & = \frac{a'}{b'}
+        \mathbb{E}_{q(\mu)}[\mu]   & = \mu_N                         \\
+        \mathbb{E}_{q(\mu)}[\mu^2] & = \frac{1}{\lambda_N} + \mu_N^2 \\
+        \mathbb{E}_{q(\tau)}[\tau] & = \frac{a_N}{b_N}
     \end{split}
 \end{equation}
 
@@ -282,6 +282,6 @@ The rest of the answer is in the code in appendix \ref{appendix:code}.
 \section{Appendix}
 \addcontentsline{toc}{section}{Appendix}
 \subsection{Python Code}\label{appendix:code}
-\lstinputlisting[label = {alg:cavi}]{py_files/cavi.py}
+\lstinputlisting[label = {alg:cavi}]{py_files/part3.py}
 
 \end{document}
