@@ -64,6 +64,8 @@
 \thispagestyle{empty}
 
 \newpage
+\tableofcontents
+\newpage
 
 \section{Exponential Family}
 
@@ -210,8 +212,10 @@ Then, by using the code in appendix \ref{alg:cavi}, we obtain :
 
 \newpage
 \appendix
-\section{Python Code}\label{appendix:code}
 
+\section*{Appendix}
+\addcontentsline{toc}{section}{Appendix}
+\subsection*{Python Code}\label{appendix:code}
 \lstinputlisting[label = {alg:cavi}]{py_files/cavi.py}
 
 \end{document}
