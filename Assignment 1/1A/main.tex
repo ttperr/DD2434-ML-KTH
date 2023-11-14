@@ -214,15 +214,45 @@ Then, by using the code in appendix \ref{alg:cavi}, we obtain :
 \subsection*{Question 3.13}
 
 Let's find the ML estimates of $\mu$ and $\tau$.
-We know that $\log(q^*(\mu)) = \mathbb{E}[\log p(X, \mu, \tau)]$.
+We know that $\log(q^*(\mu)) = \mathbb{E}_{-\mu}[\log p(X, \mu, \tau)]$.
 Then, we can write :
 
 \begin{equation}
     \begin{split}
-        \log(q^*(\mu)) & = \mathbb{E}[\log p(X, \mu, \tau)]                                                                                          \\
-                       & \overset{+}{=} \mathbb{E}[\log p(X|\mu, \tau)] + \mathbb{E}[\log p(\mu|\tau)]                                               \\
-                       & = \mathbb{E}\left[\left(\frac{\tau}{2\pi}\right)^{N/2} \exp\left\{-\frac{\tau}{2}\sum_{n=1}^{N}(x_n - \mu)^2\right\}\right] \\
+        \log(q^*(\mu)) & = \mathbb{E}_{-\mu}[\log p(X, \mu, \tau)]                                                                                                                                                                                          \\
+                       & \overset{+}{=} \mathbb{E}_\tau[\log p(X|\mu, \tau) + \log p(\mu|\tau)]                                                                                                                                                             \\
+                       & = \mathbb{E}_\tau\left[\frac{N}{2}\log\left(\frac{\tau}{2\pi}\right) + \frac{\tau}{2}\sum_{n=1}^{N}(x_n - \mu)^2 + \frac{1}{2}\log\left(\frac{\lambda_0\tau}{2\pi}\right) + \frac{\lambda_0\tau}{2}\left(\mu - \mu_0\right)\right] \\
+                       & \overset{+}{=} \frac{\mathbb{E}_{\tau}[\tau]}{2}\left(\lambda_0 (\mu - \mu_0) + \sum_{n=1}^{N}(x_n - \mu)^2\right)                                                                                                                 \\
+                       & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left(\lambda_0\mu^2 - 2\lambda_0\mu\mu_0 + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2 - 2\mu\sum_{n=1}^{N}x_n + N\mu^2\right)                                                                      \\
+                       & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left((\lambda_0 + N)\mu^2 - 2(\lambda_0\mu_0 + \sum_{n=1}^{N}x_n)\mu + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2\right)                                                                           \\
+                       & = - \frac{\mathbb{E}_\tau[\tau](\lambda_0 + N)}{2}\left(\mu^2 - 2\mu`\frac{\lambda_0\mu_0 + \sum_{n=1}^{N}x_n}{\lambda_0 + N} + \frac{\lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2}{\lambda_0 + N}\right)
     \end{split}
+\end{equation}
+
+Therefore we can conclude that $q^*(\mu) = \mathcal{N}(\mu|\mu', \lambda'^{-1})$ with :
+\begin{equation}
+    \mu'     = \frac{\lambda_0\mu_0 + \sum_{n=1}^{N}x_n}{\lambda_0 + N}
+\end{equation}
+\begin{equation}
+    \lambda' = (\lambda_0 + N)\mathbb{E}[\tau]
+\end{equation}
+
+And for $\tau$ we have :
+\begin{equation}
+    \begin{split}
+        \log(q^*(\tau)) & = \mathbb{E}_{-\tau}[\log p(X, \mu, \tau)]                                                                                                                           \\
+                        & \overset{+}{=} \mathbb{E}_\mu[\log p(X|\mu, \tau) + \log p(\mu|\tau)] + \log p(\tau)                                                                                 \\
+                        & \overset{+}{=} (a_0 - 1)\log \tau - b_0\tau + \frac{N}{2}\log \tau - \frac{\tau}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2 + \lambda_0(\mu - \mu_0)^2\right] \\
+                        & = (a_0 + \frac{N}{2} - 1)\log \tau - \left(b_0 + \frac{1}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2 + \lambda_0(\mu - \mu_0)^2\right]\right)\tau
+    \end{split}
+\end{equation}
+
+Therefore we can conclude that $q^*(\tau) = \text{Gam}(\tau|a', b')$ with :
+\begin{equation}
+    a' = a_0 + \frac{N}{2}
+\end{equation}
+\begin{equation}
+    b' = b_0 + \frac{1}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2 + \lambda_0(\mu - \mu_0)^2\right]
 \end{equation}
 
 \newpage
