@@ -7,6 +7,18 @@
 \usepackage{hyperref} % Links
 \usepackage{amsmath} % Math
 \usepackage{listings} % Import code in appendix
+\usepackage{xcolor} % For coloring code
+% Listing Configuration
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single
+}
 \usepackage{tikz} % Graph
 \usetikzlibrary{bayesnet}
 \usetikzlibrary{positioning}
@@ -142,7 +154,7 @@ The Bayes net take this form :
 \begin{figure}[H]
     \centering
     \input{dgm_answers/1.2.6/1.tikz}
-    \label{fig:fig11}
+    \label{fig:fig2.6.1}
 \end{figure}
 
 Then, if we use the method using the d-separation, we obtain this :
@@ -150,7 +162,7 @@ Then, if we use the method using the d-separation, we obtain this :
 \begin{figure}[H]
     \centering
     \input{dgm_answers/1.2.6/2.tikz}
-    \label{fig:fig12}
+    \label{fig:fig2.6.2}
 \end{figure}
 
 Therefore, we can see that $W_{d,n} \perp W_{d,n+1} | \theta_d, \beta_{1:K}$ is \underline{false}.
@@ -186,5 +198,20 @@ In the bishop book, we can see that :
 \begin{equation}
     p(\tau) = \text{Gam}(\tau|a_0, b_0)
 \end{equation}
+
+Then, by using the code in appendix \ref{alg:cavi}, we obtain :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{py_files/12_data.png}
+    \caption{Generated Data.}
+    \label{fig:3.12}
+\end{figure}
+
+\newpage
+\appendix
+\section{Python Code}\label{appendix:code}
+
+\lstinputlisting[label = {alg:cavi}]{py_files/cavi.py}
 
 \end{document}
