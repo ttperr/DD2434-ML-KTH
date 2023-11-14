@@ -202,7 +202,7 @@ In the bishop book, we can see that :
     p(\tau) = \text{Gam}(\tau|a_0, b_0)
 \end{equation}
 
-Then, by using the code in appendix \ref{alg:cavi}, we obtain :
+Then, by using the code in appendix \ref{appendix:code}, we obtain :
 
 \begin{figure}[H]
     \centering
@@ -252,24 +252,36 @@ Therefore we can conclude that $q^*(\tau) = \text{Gam}(\tau|a', b')$ with :
     a' = a_0 + \frac{N}{2}
 \end{equation}
 \begin{equation}
-    b' = b_0 + \frac{1}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2 + \lambda_0(\mu - \mu_0)^2\right]
+    \begin{split}
+        b' & = b_0 + \frac{1}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2 + \lambda_0(\mu - \mu_0)^2\right]                                                                                                     \\
+        b' & = b_0 + \frac{1}{2}\left(\sum_{n=1}^{N}x_n^2 + N\mathbb{E}_\mu[\mu^2] - 2\mathbb{E}_\mu[\mu]\sum_{n=1}^{N}x_n + \lambda_0\left(\mathbb{E}_\mu[\mu^2] + \mu_0^2 - 2\mu_0\mathbb{E}_\mu[\mu]\right)\right) \\
+    \end{split}
 \end{equation}
 
 \subsection*{Question 3.14}
 
 The equation (10.24) in the Bishop is the mean-field approximation which is :
 \begin{equation}
-    q(\mu, \theta) = q(\mu)q(\theta)
+    q(\mu, \tau) = q(\mu)q(\tau)
 \end{equation}
 
-The rest of the answer is in the code in appendix \ref{alg:cavi}.
+We have also some formulas to detail :
+\begin{equation}
+    \begin{split}
+        \mathbb{E}_\mu[\mu]   & = \mu'                        \\
+        \mathbb{E}_\mu[\mu^2] & = \frac{1}{\lambda'} + \mu'^2 \\
+        \mathbb{E}_\tau[\tau] & = \frac{a'}{b'}
+    \end{split}
+\end{equation}
+
+The rest of the answer is in the code in appendix \ref{appendix:code}.
 
 \newpage
 \appendix
 
-\section*{Appendix}
+\section{Appendix}
 \addcontentsline{toc}{section}{Appendix}
-\subsection*{Python Code}\label{appendix:code}
+\subsection{Python Code}\label{appendix:code}
 \lstinputlisting[label = {alg:cavi}]{py_files/cavi.py}
 
 \end{document}
