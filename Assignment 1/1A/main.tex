@@ -6,6 +6,7 @@
 \usepackage{float} % Floating position
 \usepackage{hyperref} % Links
 \usepackage{amsmath} % Math
+\usepackage{amssymb} % Math
 \usepackage{listings} % Import code in appendix
 \usepackage{xcolor} % For coloring code
 % Listing Configuration
@@ -209,6 +210,20 @@ Then, by using the code in appendix \ref{alg:cavi}, we obtain :
     \caption{Generated Data.}
     \label{fig:3.12}
 \end{figure}
+
+\subsection*{Question 3.13}
+
+Let's find the ML estimates of $\mu$ and $\tau$.
+We know that $\log(q^*(\mu)) = \mathbb{E}[\log p(X, \mu, \tau)]$.
+Then, we can write :
+
+\begin{equation}
+    \begin{split}
+        \log(q^*(\mu)) & = \mathbb{E}[\log p(X, \mu, \tau)]                                                                                          \\
+                       & \overset{+}{=} \mathbb{E}[\log p(X|\mu, \tau)] + \mathbb{E}[\log p(\mu|\tau)]                                               \\
+                       & = \mathbb{E}\left[\left(\frac{\tau}{2\pi}\right)^{N/2} \exp\left\{-\frac{\tau}{2}\sum_{n=1}^{N}(x_n - \mu)^2\right\}\right] \\
+    \end{split}
+\end{equation}
 
 \newpage
 \appendix
