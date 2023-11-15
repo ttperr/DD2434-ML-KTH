@@ -5,7 +5,6 @@
   \node[latent, left=of theta] (alpha) {$\alpha$};
   \node[latent, below=of theta] (lambda) {$\Lambda_d$};
   \node[latent, left=of lambda] (phi) {$\Phi$};
-
   \node[latent, right=of theta] (z) {$Z_{d,n}$};
   \node[latent, right=of z] (w) {$W_{d,n}$};
   \node[latent, right=of w] (beta) {$\beta_k$};

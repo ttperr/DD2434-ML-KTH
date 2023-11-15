@@ -3,7 +3,6 @@
   % Define nodes
   \node[latent] (theta) {$\theta_d$};
   \node[latent, left=of theta] (alpha) {$\alpha$};
-
   \node[latent, right=of theta] (z) {$Z_{d,n}$};
   \node[latent, right=of z] (w) {$W_{d,n}$};
   \node[latent, right=of w] (beta) {$\beta_k$};
