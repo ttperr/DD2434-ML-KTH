@@ -331,6 +331,16 @@ The equation (10.24) in the Bishop is the mean-field approximation which is :
     q(\mu, \tau) = q(\mu)q(\tau)
 \end{equation}
 
+Now, we need to find the ELBO formula :
+\begin{equation}
+    \begin{split}
+        \mathcal{L}(q) & = \mathbb{E}_q[\log p(X, \mu, \tau)] - \mathbb{E}_q[\log q(\mu, \tau)]                                                         \\
+                       & = \mathbb{E}_q[\log p(X|\mu, \tau) + \log p(\mu, \tau)] - \mathbb{E}_q[\log q(\mu) + \log q(\tau)]                             \\
+                       & = \mathbb{E}_q[\log p(X|\mu, \tau)] + \mathbb{E}_q[\log p(\mu, \tau)] - \mathbb{E}_q[\log q(\mu)] - \mathbb{E}_q[\log q(\tau)] \\
+                       & = \mathbb{E}_q[\log p(X|\mu, \tau)] + \mathbb{E}_q[\log p(\mu, \tau)] + \mathbb{H}_q[\mu] + \mathbb{H}_q[\tau]
+    \end{split}
+\end{equation}
+
 \newpage
 \appendix
 
@@ -342,12 +352,9 @@ The equation (10.24) in the Bishop is the mean-field approximation which is :
 \lstinputlisting[label = {alg:3.13}]{py_files/3.13.py}
 
 \subsection{Question 3.14}\label{appendix:code.3.14}
-%\lstinputlisting[label = {alg:3.14}]{py_files/3.14.py}
+\lstinputlisting[label = {alg:3.14}]{py_files/3.14.py}
 
 \subsection{Question 3.15}\label{appendix:code.3.15}
 \lstinputlisting[label = {alg:3.15}]{py_files/3.15.py}
-
-\subsection{Question 3.16}\label{appendix:code.3.16}
-%\lstinputlisting[label = {alg:3.16}]{py_files/3.16.py}
 
 \end{document}
