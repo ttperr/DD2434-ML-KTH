@@ -202,7 +202,7 @@ In the bishop book, we can see that :
     p(\tau) = \text{Gam}(\tau|a_0, b_0)
 \end{equation}
 
-Then, by using the code in appendix \ref{appendix:code}, we obtain :
+Then, by using the code in appendix \ref{appendix:code.3.12}, we obtain :
 
 \begin{figure}[H]
     \centering
@@ -258,14 +258,7 @@ Therefore we can conclude that $q^*(\tau) = \text{Gam}(\tau|a_N, b_N)$ with :
     \end{split}
 \end{equation}
 
-\subsection*{Question 3.14}
-
-The equation (10.24) in the Bishop is the mean-field approximation which is :
-\begin{equation}
-    q(\mu, \tau) = q(\mu)q(\tau)
-\end{equation}
-
-We have also some formulas to detail :
+With :
 \begin{equation}
     \begin{split}
         \mathbb{E}_{q(\mu)}[\mu]   & = \mu_N                         \\
@@ -274,14 +267,66 @@ We have also some formulas to detail :
     \end{split}
 \end{equation}
 
-The rest of the answer is in the code in appendix \ref{appendix:code}.
+If we take non-informative priors then $a_0 = b_0 = \mu_0 = \lambda_0 = 0$, then we have :
+\begin{equation}
+    \begin{split}
+        \mu_N     & = \overline{x}                                                      \\
+        \lambda_N & = N\mathbb{E}[\tau]                                                 \\
+        a_N       & = \frac{N}{2}                                                       \\
+        b_N       & = \frac{1}{2}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2\right]
+    \end{split}
+\end{equation}
+
+And by using $\mathbb{E}[\tau] = \frac{a_N}{b_N}$ we obtain :
+\begin{equation}
+    \begin{split}
+        \frac{1}{\mathbb{E}[\tau]} & = \frac{b_N}{a_N}                                                    \\
+        \frac{1}{\mathbb{E}[\tau]} & = \frac{2}{2N}\mathbb{E}_\mu\left[\sum_{n=1}^{N}(x_n - \mu)^2\right] \\
+        \frac{1}{\mathbb{E}[\tau]} & = \overline{x^2} - 2\overline{x}\mathbb{E}[\mu] + \mathbb{E}[\mu^2]  \\
+    \end{split}
+\end{equation}
+
+And, with the fact that $\mathbb{E}[\mu] = \mu_N$ and $\mathbb{E}[\mu^2] = \frac{1}{\lambda_N} + \mu_N^2$, we obtain :
+\begin{equation}
+    \begin{split}
+        \mathbb{E}[\mu]   & = \overline{x}                                 \\
+        \mathbb{E}[\mu^2] & = \frac{1}{N\mathbb{E}[\tau]} + \overline{x}^2
+    \end{split}
+\end{equation}
+
+And therefore:
+\begin{equation}
+    \frac{1}{\mathbb{E}[\tau]} = \frac{1}{N-1}(\overline{x^2} - \overline{x}^2) = \frac{1}{N-1}\sum_{n=1}^{N}(x_n - \overline{x})^2
+\end{equation}
+
+The implementation is in the code in appendix \ref{appendix:code.3.13}.
+
+\subsection*{Question 3.14}
+
+The equation (10.24) in the Bishop is the mean-field approximation which is :
+\begin{equation}
+    q(\mu, \tau) = q(\mu)q(\tau)
+\end{equation}
+
+The rest of the answer is in the code in appendix \ref{appendix:code.3.14}.
 
 \newpage
 \appendix
 
 \section{Appendix}
-\addcontentsline{toc}{section}{Appendix}
-\subsection{Python Code}\label{appendix:code}
-\lstinputlisting[label = {alg:cavi}]{py_files/part3.py}
+\subsection{Question 3.12}\label{appendix:code.3.12}
+\lstinputlisting[label = {alg:3.12}]{py_files/3.12.py}
+
+\subsection{Question 3.13}\label{appendix:code.3.13}
+\lstinputlisting[label = {alg:3.13}]{py_files/3.13.py}
+
+\subsection{Question 3.14}\label{appendix:code.3.14}
+%\lstinputlisting[label = {alg:3.14}]{py_files/3.14.py}
+
+\subsection{Question 3.15}\label{appendix:code.3.15}
+%\lstinputlisting[label = {alg:3.15}]{py_files/3.15.py}
+
+\subsection{Question 3.16}\label{appendix:code.3.16}
+%\lstinputlisting[label = {alg:3.16}]{py_files/3.16.py}
 
 \end{document}
