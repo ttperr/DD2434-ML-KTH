@@ -4,7 +4,7 @@ def ML_est(data):
     x_mean = np.mean(data)
     x_var = np.var(data, ddof=1)
 
-    tau_ml = 1 / x_var
+    tau_ml = 1 / (N * x_var)
     mu_ml = x_mean
 
     return mu_ml, tau_ml
