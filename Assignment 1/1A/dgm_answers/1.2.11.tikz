@@ -1,0 +1,66 @@
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[latent] (theta_1) {$\theta_1$};
+  \node[latent, below=of theta_1] (theta_d) {$\theta_d$};
+  \node[latent, below=of theta_d] (theta_d+1) {$\theta_{d+1}$};
+  \node[latent, below=of theta_d+1] (theta_D) {$\theta_D$};
+  
+  \node[latent, left=of theta_d] (alpha) {$\alpha$};
+  
+  \node[obs, right=of theta_1] (z_1n) {$Z_{1,n}$};
+  \node[obs, right=of theta_d] (z_dn) {$Z_{d,n}$};
+  \node[obs, right=of theta_d+1] (z_d+1n) {$Z_{d+1,n}$};
+  \node[obs, right=of theta_D] (z_Dn) {$Z_{D,n}$};
+  
+  \node[latent, right=of z_1n] (w_1n) {$W_{1,n}$};
+  \node[latent, right=of z_dn] (w_dn) {$W_{d,n}$};
+  \node[latent, right=of z_d+1n] (w_d+1n) {$W_{d+1,n}$};
+  \node[latent, right=of z_Dn] (w_Dn) {$W_{D,n}$};
+  
+  \node[latent, right=of w_d+1n] (beta) {$\beta_k$};
+
+  \node[latent, right=of beta] (eta) {$\eta$};
+
+  \node[latent, below=of alpha] (lambda_1) {$\Lambda_1$};
+  \node[latent, below=of lambda_1] (lambda_d) {$\Lambda_d$};
+  \node[latent, below=of lambda_d] (lambda_d+1) {$\Lambda_{d+1}$};
+  \node[latent, below=of lambda_d+1] (lambda_D) {$\Lambda_D$};
+  \node[obs, left=of lambda_d] (phi) {$\Phi$};
+
+  % Connect nodes
+  \edge {alpha} {theta_1, theta_d, theta_d+1, theta_D}
+  \edge[red dot edge] {phi} {lambda_1, lambda_d, lambda_d+1, lambda_D}
+
+  \edge {theta_1} {z_1n}
+  \edge {theta_d} {z_dn}
+  \edge {theta_d+1} {z_d+1n}
+  \edge {theta_D} {z_Dn}
+
+  \edge {lambda_1} {theta_1}
+  \edge {lambda_d} {theta_d}
+  \edge {lambda_d+1} {theta_d+1}
+  \edge {lambda_D} {theta_D}
+
+  \draw[dotted] (theta_1) -- (theta_d);
+  \draw[dotted] (theta_d) -- (theta_d+1);
+  \draw[dotted] (theta_d+1) -- (theta_D);
+
+  \draw[dotted] (lambda_1) -- (lambda_d);
+  \draw[dotted] (lambda_d) -- (lambda_d+1);
+  \draw[dotted] (lambda_d+1) -- (lambda_D);
+
+  \edge[red dot edge] {z_1n} {w_1n}
+  \edge[red dot edge] {z_dn} {w_dn}
+  \edge[red dot edge] {z_d+1n} {w_d+1n}
+  \edge[red dot edge] {z_Dn} {w_Dn}
+
+  \edge {beta} {w_1n, w_dn, w_d+1n, w_Dn}
+
+  \edge {eta} {beta}
+
+  % Plates
+  \plate[inner xsep=0.3cm] {plate1} {(z_1n)(z_dn)(z_d+1n)(z_Dn)(w_1n)(w_dn)(w_d+1n)(w_Dn)} {$N$}
+  \plate[inner xsep=0.2cm, xshift=0.1cm] {plate3} {(beta)} {$K$}
+
+\end{tikzpicture}
