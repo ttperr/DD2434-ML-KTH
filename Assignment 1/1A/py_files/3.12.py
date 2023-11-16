@@ -4,7 +4,7 @@ import numpy as np
 
 def generate_data(mu, tau, N):
     # Insert your code here
-    D = np.random.normal(mu, tau, N)
+    D = np.random.normal(mu, 1/tau, N)
 
     return D
 

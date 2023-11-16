@@ -9,6 +9,6 @@ def compute_exact_posterior(D, a_0, b_0, mu_0, lambda_0):
     b_prime = b_0 + 1 / 2 * (np.sum((D - x_mean)**2) +
                              lambda_0 * mu_0**2 - lambda_prime * mu_prime**2)
 
-    exact_post_distribution = (mu_prime, lambda_prime, a_prime, b_prime)
+    exact_post_distribution = (a_prime, b_prime, mu_prime, lambda_prime)
 
     return exact_post_distribution
