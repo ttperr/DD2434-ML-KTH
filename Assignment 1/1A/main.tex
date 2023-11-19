@@ -389,10 +389,10 @@ The equation (10.24) in the Bishop is the mean-field approximation which is :
 Now, we need to find the ELBO formula :
 \begin{equation}
     \begin{split}
-        \mathcal{L}(q) & = \mathbb{E}_q[\log p(X, \mu, \tau)] - \mathbb{E}_q[\log q(\mu, \tau)]                                                         \\
-                       & = \mathbb{E}_q[\log p(X|\mu, \tau) + \log p(\mu, \tau)] - \mathbb{E}_q[\log q(\mu) + \log q(\tau)]                             \\
-                       & = \mathbb{E}_q[\log p(X|\mu, \tau)] + \mathbb{E}_q[\log p(\mu, \tau)] - \mathbb{E}_q[\log q(\mu)] - \mathbb{E}_q[\log q(\tau)] \\
-                       & = \mathbb{E}_q[\log p(X|\mu, \tau)] + \mathbb{E}_q[\log p(\mu, \tau)] + \mathbb{H}_q[\mu] + \mathbb{H}_q[\tau]
+        \mathcal{L}(q) & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X, \mu, \tau)] - \mathbb{E}_{q(\mu),q(\tau)}[\log q(\mu, \tau)]                                                         \\
+                       & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau) + \log p(\mu, \tau)] - \mathbb{E}_{q(\mu),q(\tau)}[\log q(\mu) + \log q(\tau)]                             \\
+                       & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau)] + \mathbb{E}_{q(\mu),q(\tau)}[\log p(\mu, \tau)] - \mathbb{E}_{q(\mu)}[\log q(\mu)] - \mathbb{E}_{q(\tau)}[\log q(\tau)] \\
+                       & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau)] + \mathbb{E}_{q(\mu),q(\tau)}[\log p(\mu, \tau)] + \mathbb{H}_q[\mu] + \mathbb{H}_q[\tau]
     \end{split}
 \end{equation}
 
