@@ -377,6 +377,14 @@ Therefore, as we saw in the question 1.3 in the Module 1 exercise, we have $\mu,
     \end{split}
 \end{equation}
 
+Therefore, if we plot the contour for each datasets we obtain :
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{py_files/14_contours.png}
+    \caption{Contours of exact posteriors.}
+    \label{fig:3.14}
+\end{figure}
+
 The rest of the answer is in the code in appendix \ref{appendix:code.3.14}.
 
 \subsection*{Question 3.15}
@@ -389,8 +397,8 @@ The equation (10.24) in the Bishop is the mean-field approximation which is :
 Now, we need to find the ELBO formula :
 \begin{equation}
     \begin{split}
-        \mathcal{L}(q) & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X, \mu, \tau)] - \mathbb{E}_{q(\mu),q(\tau)}[\log q(\mu, \tau)]                                                         \\
-                       & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau) + \log p(\mu, \tau)] - \mathbb{E}_{q(\mu),q(\tau)}[\log q(\mu) + \log q(\tau)]                             \\
+        \mathcal{L}(q) & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X, \mu, \tau)] - \mathbb{E}_{q(\mu),q(\tau)}[\log q(\mu, \tau)]                                                                        \\
+                       & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau) + \log p(\mu, \tau)] - \mathbb{E}_{q(\mu),q(\tau)}[\log q(\mu) + \log q(\tau)]                                            \\
                        & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau)] + \mathbb{E}_{q(\mu),q(\tau)}[\log p(\mu, \tau)] - \mathbb{E}_{q(\mu)}[\log q(\mu)] - \mathbb{E}_{q(\tau)}[\log q(\tau)] \\
                        & = \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau)] + \mathbb{E}_{q(\mu),q(\tau)}[\log p(\mu, \tau)] + \mathbb{H}_q[\mu] + \mathbb{H}_q[\tau]
     \end{split}

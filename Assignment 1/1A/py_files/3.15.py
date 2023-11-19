@@ -1,13 +1,3 @@
-from scipy.special import psi
-from scipy.stats import gamma, norm, multivariate_normal
-
-# prior parameters
-mu_0 = 0
-lambda_0 = 1
-a_0 = 1
-b_0 = 1
-
-
 eps = 1e-6
 
 

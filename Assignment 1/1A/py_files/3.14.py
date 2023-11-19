@@ -12,3 +12,43 @@ def compute_exact_posterior(D, a_0, b_0, mu_0, lambda_0):
     exact_post_distribution = (a_prime, b_prime, mu_prime, lambda_prime)
 
     return exact_post_distribution
+
+
+# prior parameters
+mu_0 = 0
+lambda_0 = 10
+a_0 = 20
+b_0 = 20
+
+mus = np.linspace(0.3, 1.2, 200)
+taus = np.linspace(0.1, 1, 200)
+
+fig, axs = plt.subplots(1, 3, figsize=(12, 4))
+for i, dataset in enumerate([dataset_1, dataset_2, dataset_3]):
+    mu_ml, tau_ml = ML_est(dataset)
+
+    a_T, b_T, mu_T, lambda_T = compute_exact_posterior(
+        dataset, a_0, b_0, mu_0, lambda_0)
+
+    Z_exact = np.zeros((len(mus), len(taus)))
+    pTau = gamma(a=a_T, loc=0, scale=1/b_T)
+    for j, tau in enumerate(taus):
+        pMu = norm(loc=mu_T, scale=1/np.sqrt(lambda_T*tau))
+        Z_exact[:, j] = pMu.pdf(mus) * pTau.pdf(tau)
+    # Finding the maximum of the exact posterior
+    mu_max = mus[np.argmax(np.max(Z_exact, axis=1))]
+    tau_max = taus[np.argmax(np.max(Z_exact, axis=0))]
+    # Plotting the results
+    axs[i].contour(*np.meshgrid(mus, taus), Z_exact.T,
+                   levels=5, colors=['green'])
+    axs[i].plot(mu_max, tau_max, 'ro', label='MAP')
+    axs[i].plot(mu_ml, tau_ml, 'b+', label='ML Estimate')
+    axs[i].plot(MU, TAU, 'gx', label='Actual')
+    axs[i].legend()
+    axs[i].grid()
+    axs[i].set_xlabel('mu')
+    axs[i].set_ylabel('tau')
+    axs[i].set_title('Exact posterior Dataset {}'.format(i+1))
+
+plt.savefig('14_contours.png')
+plt.show()

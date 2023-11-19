@@ -1,12 +1,14 @@
-import matplotlib.pyplot as plt
 import numpy as np
+from scipy.stats import gamma, norm
+from scipy.special import psi
+np.random.seed(14)
 
 
 def generate_data(mu, tau, N):
-    # Insert your code here
-    D = np.random.normal(mu, 1/tau, N)
+  # Insert your code here
+  D = np.random.normal(mu, 1/tau, N)
 
-    return D
+  return D
 
 
 mu = 1
