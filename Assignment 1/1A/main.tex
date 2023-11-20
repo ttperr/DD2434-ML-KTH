@@ -274,12 +274,12 @@ Then, we can write :
 
 \begin{equation}
     \begin{split}
-        \log(q^*(\mu)) & = \mathbb{E}_{-\mu}[\log p(X, \mu, \tau)]                                                                                                                                                                                          \\
-                       & \overset{+}{=} \mathbb{E}_\tau[\log p(X|\mu, \tau) + \log p(\mu|\tau)]                                                                                                                                                             \\
-                       & = \mathbb{E}_\tau\left[\frac{N}{2}\log\left(\frac{\tau}{2\pi}\right) + \frac{\tau}{2}\sum_{n=1}^{N}(x_n - \mu)^2 + \frac{1}{2}\log\left(\frac{\lambda_0\tau}{2\pi}\right) + \frac{\lambda_0\tau}{2}\left(\mu - \mu_0\right)\right] \\
-                       & \overset{+}{=} \frac{\mathbb{E}_{\tau}[\tau]}{2}\left(\lambda_0 (\mu - \mu_0) + \sum_{n=1}^{N}(x_n - \mu)^2\right)                                                                                                                 \\
-                       & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left(\lambda_0\mu^2 - 2\lambda_0\mu\mu_0 + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2 - 2\mu\sum_{n=1}^{N}x_n + N\mu^2\right)                                                                      \\
-                       & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left((\lambda_0 + N)\mu^2 - 2(\lambda_0\mu_0 + \sum_{n=1}^{N}x_n)\mu + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2\right)                                                                           \\
+        \log(q^*(\mu)) & = \mathbb{E}_{-\mu}[\log p(X, \mu, \tau)]                                                                                                                                                                                            \\
+                       & \overset{+}{=} \mathbb{E}_\tau[\log p(X|\mu, \tau) + \log p(\mu|\tau)]                                                                                                                                                               \\
+                       & = \mathbb{E}_\tau\left[\frac{N}{2}\log\left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\sum_{n=1}^{N}(x_n - \mu)^2 + \frac{1}{2}\log\left(\frac{\lambda_0\tau}{2\pi}\right) - \frac{\lambda_0\tau}{2}\left(\mu - \mu_0\right)^2\right] \\
+                       & \overset{+}{=} -\frac{\mathbb{E}_{\tau}[\tau]}{2}\left(\lambda_0 (\mu - \mu_0)^2 + \sum_{n=1}^{N}(x_n - \mu)^2\right)                                                                                                                \\
+                       & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left(\lambda_0\mu^2 - 2\lambda_0\mu\mu_0 + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2 - 2\mu\sum_{n=1}^{N}x_n + N\mu^2\right)                                                                        \\
+                       & = - \frac{\mathbb{E}_\tau[\tau]}{2}\left((\lambda_0 + N)\mu^2 - 2(\lambda_0\mu_0 + \sum_{n=1}^{N}x_n)\mu + \lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2\right)                                                                             \\
                        & = - \frac{\mathbb{E}_\tau[\tau](\lambda_0 + N)}{2}\left(\mu^2 - 2\mu\frac{\lambda_0\mu_0 + \sum_{n=1}^{N}x_n}{\lambda_0 + N} + \frac{\lambda_0\mu_0^2 + \sum_{n=1}^{N}x_n^2}{\lambda_0 + N}\right)
     \end{split}
 \end{equation}
