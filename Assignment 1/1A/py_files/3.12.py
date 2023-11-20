@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import gamma, norm
 from scipy.special import psi
@@ -5,18 +6,18 @@ np.random.seed(14)
 
 
 def generate_data(mu, tau, N):
-  # Insert your code here
-  D = np.random.normal(mu, 1/tau, N)
+    # Insert your code here
+    D = np.random.normal(mu, np.sqrt(1/tau), N)
 
-  return D
+    return D
 
 
-mu = 1
-tau = 0.5
+MU = 1
+TAU = 0.5
 
-dataset_1 = generate_data(mu, tau, 10)
-dataset_2 = generate_data(mu, tau, 100)
-dataset_3 = generate_data(mu, tau, 1000)
+dataset_1 = generate_data(MU, TAU, 10)
+dataset_2 = generate_data(MU, TAU, 100)
+dataset_3 = generate_data(MU, TAU, 1000)
 
 # Visulaize the datasets via histograms
 # Insert your code here
