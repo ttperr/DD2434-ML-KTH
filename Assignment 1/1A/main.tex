@@ -351,7 +351,12 @@ And, with the fact that $\mathbb{E}[\mu] = \mu_N$ and $\mathbb{E}[\mu^2] = \frac
 
 And therefore:
 \begin{equation}
-    \frac{1}{\mathbb{E}[\tau]} = \overline{x^2} - \overline{x}^2 = \frac{1}{N}\sum_{n=1}^{N}(x_n - \overline{x})^2
+    \begin{split}
+        \frac{1}{\mathbb{E}[\tau]} = \frac{N}{N+1}\left(\overline{x^2} - 2\overline{x}^2 + \frac{1}{N\mathbb{E}[\tau]} + \overline{x}^2\right) & \Leftrightarrow \frac{1}{\mathbb{E}[\tau]} - \frac{1}{(N+1)\mathbb{E}[\tau]} = \frac{N}{N+1}\left(\overline{x^2} - \overline{x}^2\right) \\
+                                                                                                                                               & \Leftrightarrow \frac{N+1-1}{(N+1)\mathbb{E}[\tau]} = \frac{N}{N+1}\left(\overline{x^2} - \overline{x}^2\right)                          \\
+                                                                                                                                               & \Leftrightarrow \frac{1}{\mathbb{E}[\tau]} = \left(\overline{x^2} - \overline{x}^2\right)                                                \\
+                                                                                                                                               & \Leftrightarrow \frac{1}{\mathbb{E}[\tau]} = \frac{1}{N}\sum_{n=1}^{N}(x_n - \overline{x})^2                                             \\
+    \end{split}
 \end{equation}
 
 Which define the ML estimates. The implementation is in the code in appendix \ref{appendix:code.3.13}.
