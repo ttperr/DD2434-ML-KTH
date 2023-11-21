@@ -72,7 +72,7 @@ def compute_z_cavi(mus, taus, a_, b_, mu_, lambda_):
     return z
 
 
-iter = 3  # number of iterations for CAVI
+iter = 4  # number of iterations for CAVI
 mus = np.linspace(-0.2, 1.1, 200)
 taus = np.linspace(0.1, 1.1, 200)
 
