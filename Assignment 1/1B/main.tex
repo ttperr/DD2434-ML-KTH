@@ -117,11 +117,11 @@ Here, the mean field approximation is not an approximation but an equality becau
 \end{equation}
 Now, if we take the entire expression that is multiplied by $\mathbb{1}_{\{Z_n = k\}}$ and we call it $u_{n,k}$, we have:
 \begin{equation}
-  q^*(Z_n) \overset{+}{=} \prod_{k=1}^{K}u_{n,k}^{\mathbb{1}_{\{Z_n = k\}}}
+  q^*(Z_n) \propto \prod_{k=1}^{K}u_{n,k}^{\mathbb{1}_{\{Z_n = k\}}}
 \end{equation}
 And if we normalize by taking $r_{n,k} = \frac{u_{n,k}}{\sum_{i=1}^{K}u_{n,i}}$ we get:
 \begin{equation}
-  q^*(Z_n) \overset{+}{=} \prod_{k=1}^{K}r_{n,k}^{\mathbb{1}_{\{Z_n = k\}}}
+  q^*(Z_n) = \prod_{k=1}^{K}r_{n,k}^{\mathbb{1}_{\{Z_n = k\}}}
 \end{equation}
 Wich means that $q^*(Z_n)$ is a categorical distribution with parameters $r_{n,k}$. There for we have the expectation of $Z_n$ easily because $\mathbb{E}[z_{n,k}] = r_{n,k}$ where $z_{n,k} = \mathbb{1}_{\{S_n = k\}}$. Note that $r_{n,k}$ depends of the expected value of $\mu_k$, $\mu_k^2$, $\lambda_k$ and $\log \lambda_k$. We will be able to compute these expected values by finding $q^*(\mu_k)$ and $q^*(\lambda_k)$.
 
