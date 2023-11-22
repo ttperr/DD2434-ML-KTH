@@ -107,12 +107,32 @@ Where:
 Here, the mean field approximation is not an approximation but an equality because $Z, \mu, \lambda$ are independent. Therefore we have:
 \begin{equation}
   \begin{split}
-    \log q^*(Z_n) & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n,S_n,Z_n,\lambda,\mu|\pi,\tau,\alpha,\beta,\nu,\rho)]                                                                                                                                   \\
-                  & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n|Z_n,\mu,\tau) + \log p(S_n|Z_n,\lambda) + \log p(Z_n|\pi)]                                                                                                                             \\
-                  & = \mathbb{E}_{\mu}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) -\frac{\rho}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right)\right]                                                            \\
-                  & \qquad\qquad + \mathbb{E}_{\lambda}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\mathbb{E}_{\lambda}\left(\log(\pi_k) + \sum_{j \in \mathbb{N}}\mathbb{1}_{\{S_n = j\}}\left[-\lambda_k + j\log(\lambda_k) - \log(j!)\right]\right)\right] \\
-                  & \overset{+}{=} \sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log(\tau) - \frac{\rho}{2}\mathbb{E}_{\mu}\left[(x_n - \mu_k)^T(x_n - \mu_k)\right] \right.                                                                                   \\
-                  & \qquad\qquad \left. + \log(\pi_k) + \sum_{j \in \mathbb{N}}\mathbb{1}_{\{S_n = j\}}\mathbb{E}_{\lambda}\left[-\lambda_k + j\log(\lambda_k)\right]\right)
+    \log q^*(Z_n) & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n,S_n,Z_n,\lambda,\mu|\pi,\tau,\alpha,\beta,\nu,\rho)]                                                                                                               \\
+                  & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n|Z_n,\mu,\tau) + \log p(S_n|Z_n,\lambda) + \log p(Z_n|\pi)]                                                                                                         \\
+                  & = \mathbb{E}_{\mu}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) -\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right)\right]                                        \\
+                  & \qquad\qquad + \mathbb{E}_{\lambda}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log(\pi_k) + \sum_{j \in \mathbb{N}}\mathbb{1}_{\{S_n = j\}}\left[-\lambda_k + j\log(\lambda_k) - \log(j!)\right]\right)\right] \\
+                  & \overset{+}{=} \sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\mathbb{E}_{\mu}\left[(x_n - \mu_k)^T(x_n - \mu_k)\right] \right.                                      \\
+                  & \qquad\qquad \left. + \log(\pi_k) + \sum_{j \in \mathbb{N}}\mathbb{1}_{\{S_n = j\}}\mathbb{E}_{\lambda}\left[-\lambda_k + j\log(\lambda_k) - \log(j!)\right]\right)
+  \end{split}
+\end{equation}
+Now, if we take the entire expression that is multiplied by $\mathbb{1}_{\{Z_n = k\}}$ and we call it $u_{n,k}$, we have:
+\begin{equation}
+  q^*(Z_n) \overset{+}{=} \prod_{k=1}^{K}u_{n,k}^{\mathbb{1}_{\{Z_n = k\}}}
+\end{equation}
+And if we normalize by taking $r_{n,k} = \frac{u_{n,k}}{\sum_{i=1}^{K}u_{n,i}}$ we get:
+\begin{equation}
+  q^*(Z_n) \overset{+}{=} \prod_{k=1}^{K}r_{n,k}^{\mathbb{1}_{\{Z_n = k\}}}
+\end{equation}
+Wich means that $q^*(Z_n)$ is a categorical distribution with parameters $r_{n,k}$. There for we have the expectation of $Z_n$ easily because $\mathbb{E}[z_{n,k}] = r_{n,k}$ where $z_{n,k} = \mathbb{1}_{\{S_n = k\}}$. Note that $r_{n,k}$ depends of the expected value of $\mu_k$, $\mu_k^2$, $\lambda_k$ and $\log \lambda_k$. We will be able to compute these expected values by finding $q^*(\mu_k)$ and $q^*(\lambda_k)$.
+
+\noindent Let us compute $q^*(\mu_k)$:
+\begin{equation}
+  \begin{split}
+    \log q^*(\mu_k) & \overset{+}{=} \mathbb{E}_{Z,\lambda}[\log p(X,S,Z = k,\lambda_k,\mu_k|\pi,\tau,\alpha,\beta,\nu,\rho)]                                                                                                  \\
+                    & \overset{+}{=} \mathbb{E}_{Z,\lambda}[\log p(X|Z = k,\mu_k,\tau) + \log p(\mu_k|\nu,\rho)]                                                                                                               \\
+                    & = \mathbb{E}_{Z,\lambda}\left[\sum_{n=1}^{N}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) -\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right)\right]                     \\
+                    & \qquad\qquad + \log \left(\frac{\rho}{2\pi}\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right)                                                                                             \\
+                    & \overset{+}{=} \sum_{n=1}^{N}r_{n,k}\left(\log \left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right) \\
   \end{split}
 \end{equation}
 
