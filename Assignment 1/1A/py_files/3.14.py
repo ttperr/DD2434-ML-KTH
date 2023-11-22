@@ -50,5 +50,5 @@ for i, dataset in enumerate([dataset_1, dataset_2, dataset_3]):
     axs[i].set_ylabel('tau')
     axs[i].set_title('Exact posterior Dataset {}'.format(i+1))
 plt.tight_layout()
-plt.savefig('14_contours.png')
+plt.savefig('../images/14_contours.png')
 plt.show()

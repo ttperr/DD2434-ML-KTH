@@ -117,7 +117,7 @@ for i, dataset in enumerate([dataset_1, dataset_2, dataset_3]):
         axs[j, i].set_xlim(xlims[i])
         axs[j, i].set_ylim(ylims[i])
 plt.tight_layout()
-plt.savefig('15_contours.png')
+plt.savefig('../images/15_contours.png')
 plt.show()
 
 # Plot ELBOs
@@ -129,5 +129,5 @@ for i in range(3):
     axs[i].grid()
 plt.tight_layout()
 plt.title('ELBO')
-plt.savefig('15_elbo.png')
+plt.savefig('../images/15_elbo.png')
 plt.show()
