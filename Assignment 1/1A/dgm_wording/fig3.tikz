@@ -12,6 +12,7 @@
   % Connect nodes
   \edge {mu} {x}
   \edge {tau} {x}
+  \edge {tau} {mu}
   \edge {a_0} {tau}
   \edge {b_0} {tau}
   \edge {lambda_0} {mu}

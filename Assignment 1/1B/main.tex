@@ -66,6 +66,41 @@
   \caption{Directed Graphical Model for the Earthquake problem}
 \end{figure}
 
+\subsection{Question 1.2}
+
+Here, we know these distributions:
+\begin{itemize}
+  \item $p(Z_n|\pi) = Categorical(\pi)$
+  \item $p(S_n|Z_n = k, \lambda_k) = Poisson(\lambda_k)$
+  \item $p(X_n|Z_n = k, \mu_k, \tau) = Normal(\mu_k, \tau \cdot I)$
+  \item $p(\mu_k|\nu,\rho) = Normal(\nu, \rho \cdot I)$
+  \item $p(\lambda_k|\alpha, \beta) = Gamma(\alpha, \beta)$
+\end{itemize}
+Where, $\rho$ and $\tau$ define precision and not standard variation. Then we have:
+\begin{equation}
+  \begin{split}
+    \log p(X,S,Z,\lambda,\mu|\pi,\tau,\alpha,\beta,\nu,\rho) & = \log p(X|S,Z,\lambda,\mu,\pi,\tau,\alpha,\beta,\nu,\rho)                 \\
+                                                             & \qquad\qquad + \log p(S,Z,\lambda,\mu|\pi,\alpha,\beta,\nu,\rho)           \\
+                                                             & = \log p(X|Z,\mu,\tau) + \log p(S|Z,\lambda,\mu,\pi,\alpha,\beta,\nu,\rho) \\
+                                                             & \qquad\qquad + \log p(Z,\lambda,\mu|\pi\alpha,\beta,\nu,\rho)              \\
+                                                             & = \log p(X|Z,\mu,\tau) + \log p(S|Z,\lambda) + \log p(Z|\pi)               \\
+                                                             & \qquad\qquad + \log p(\lambda,\mu|\alpha,\beta,\nu,\rho)                   \\
+    \log p(X,S,Z,\lambda,\mu|\pi,\tau,\alpha,\beta,\nu,\rho) & = \log p(X|Z,\mu,\tau) + \log p(S|Z,\lambda) + \log p(Z|\pi)               \\
+                                                             & \qquad\qquad + \log p(\mu|\nu,\rho) + \log p(\lambda|\alpha,\beta)         \\
+  \end{split}
+\end{equation}
+
+Where:
+\begin{equation}
+  \begin{split}
+    \log p(X|Z,\mu,\tau)         & = \sum_{n=1}^{N}\sum_{k=1}^{K}\log p(X_n|Z_n = k, \mu_k, \tau) \\
+    \log p(S|Z,\lambda)          & = \sum_{n=1}^{N}\sum_{k=1}^{K}\log p(S_n|Z_n = k, \lambda_k)   \\
+    \log p(Z|\pi)                & = \sum_{n=1}^{N}\log p(Z_n|\pi)                                \\
+    \log p(\mu|\nu,\rho)         & = \sum_{k=1}^{K}\log p(\mu_k|\nu,\rho)                         \\
+    \log p(\lambda|\alpha,\beta) & = \sum_{k=1}^{K}\log p(\lambda_k|\alpha,\beta)                 \\
+  \end{split}
+\end{equation}
+
 \newpage
 \appendix
 
