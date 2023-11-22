@@ -23,17 +23,6 @@
 \usepackage{tikz} % Graph
 \usetikzlibrary{bayesnet}
 \usetikzlibrary{positioning}
-\usetikzlibrary{decorations.markings}
-
-\tikzset{
-  red dot edge/.style={
-    decoration={
-      markings,
-      mark=at position 0 with {\fill[red] circle (2pt);},
-    },
-    postaction={decorate},
-  },
-} % Red dot - place in [] just after \edge
 
 \graphicspath{{images/}}
 
@@ -57,7 +46,7 @@
 \maketitle
 
 \begin{center}
-    \includegraphics[scale=0.5]{KTH_logo_RGB_bla.png}
+  \includegraphics[scale=0.5]{KTH_logo_RGB_bla.png}
 \end{center}
 
 \thispagestyle{empty}
@@ -66,9 +55,16 @@
 \tableofcontents
 \newpage
 
-\section{Exponential Family}
+\section{CAVI for Earth quakes}
 
 \subsection{Question 1.1}
+
+\begin{figure}[H]
+  \centering
+  \input{dgm/fig1.tikz}
+  \label{fig:fig1}
+  \caption{Directed Graphical Model for the Earthquake problem}
+\end{figure}
 
 \newpage
 \appendix

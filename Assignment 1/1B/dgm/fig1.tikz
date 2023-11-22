@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+
+% Custom style for nodes without a border
+    \tikzstyle{plain} = [draw=none, fill=none]
+
+    % Define nodes
+    \node[latent] (z) {$Z_n$};
+    \node[plain, above=of z] (pi) {$\pi$};
+    \node[latent, below left=of z] (s) {$S_n$};
+    \node[latent, below right=of z] (x) {$X_n$};
+    \node[latent, below=of s] (lambda) {$\lambda$};
+    \node[latent, below=of x] (mu) {$\mu$};
+    \node[plain, right=of x] (tau) {$\tau$};
+    \node[plain, below=of lambda] (alpha) {$\alpha$};
+    \node[plain, left=of alpha] (beta) {$\beta$};
+    \node[plain, below=of mu] (nu) {$\nu$};
+    \node[plain, left=of nu] (rho) {$\rho$};
+
+    % Connect nodes
+    \edge {pi} {z};
+    \edge {z} {x, s};
+    \edge {lambda} {s};
+    \edge {mu} {x};
+    \edge {tau} {x};
+    \edge {alpha, beta} {lambda};
+    \edge {nu, rho} {mu};
+
+    % Plates
+    \plate [inner sep=0.3cm] {plate1} {(z)(s)(x)} {$N$}; % Adjusted position and size
+    \plate [inner xsep=0.3cm] {plate2} {(mu)(lambda)} {$K$}; % Adjusted position and size
+
+
+\end{tikzpicture}
