@@ -430,6 +430,34 @@ Now, we need to find the ELBO formula :
     \end{split}
 \end{equation}
 
+If we compute the first term we have:
+\begin{equation}
+    \begin{split}
+        \mathbb{E}_{q(\mu),q(\tau)}[\log p(X|\mu, \tau)] & = \mathbb{E}_{q(\mu),q(\tau)}\left[\frac{N}{2}\log\left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\sum_{n=1}^{N}(x_n - \mu)^2\right]                          \\
+                                                         & = \frac{N}{2}\left(\mathbb{E}_{q(\tau)}[\log \tau] - \log(2\pi)\right)                                                                                       \\
+                                                         & \qquad\qquad - \frac{\mathbb{E}_{q(\tau)}[\tau]}{2}\left(\sum_{n=1}^{N}x_n^2 - 2\mathbb{E}_{q(\mu)}[\mu]N\overline{x_n} + N\mathbb{E}_{q(\mu)}[\mu^2]\right) \\
+    \end{split}
+\end{equation}
+
+And the second one is:
+\begin{equation}
+    \begin{split}
+        \mathbb{E}_{q(\mu),q(\tau)}[\log p(\mu, \tau)] & = \mathbb{E}_{q(\mu),q(\tau)}\left[\log\left(\frac{b_0^{a_0} \sqrt{\lambda_0}}{\Gamma(a_0)\sqrt{2\pi}}\right) + (a_0 - \frac{1}{2})\log \tau - b_0\tau - \frac{\lambda_0\tau(\mu - \mu_0)^2}{2}\right] \\
+                                                       & = \log\left(\frac{b_0^{a_0} \sqrt{\lambda_0}}{\Gamma(a_0)\sqrt{2\pi}}\right) + (a_0 - \frac{1}{2})\mathbb{E}_{q(\tau)}[\log \tau] - b_0\mathbb{E}_{q(\tau)}[\tau]                                      \\
+                                                       & \qquad\qquad - \frac{\lambda_0\mathbb{E}_{q(\tau)}[\tau]}{2}\left(\mathbb{E}_{q(\mu)}[\mu^2] - 2\mu_0\mathbb{E}_{q(\mu)}[\mu] + \mu_0^2\right)                                                        \\
+    \end{split}
+\end{equation}
+
+And we can compute all of that because entropies are known and we have the following expectations:
+\begin{equation}
+    \begin{split}
+        \mathbb{E}_{q(\mu)}[\mu]        & = \mu_N                         \\
+        \mathbb{E}_{q(\mu)}[\mu^2]      & = \frac{1}{\lambda_N} + \mu_N^2 \\
+        \mathbb{E}_{q(\tau)}[\tau]      & = \frac{a_N}{b_N}               \\
+        \mathbb{E}_{q(\tau)}[\log \tau] & = \psi(a_N) - \log b_N
+    \end{split}
+\end{equation}
+
 Then we obtain this result :
 \begin{figure}[H]
     \centering

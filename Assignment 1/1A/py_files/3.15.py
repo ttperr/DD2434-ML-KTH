@@ -1,15 +1,44 @@
+def compute_E_tau(a_N, b_N):
+    E_tau = a_N / b_N
+
+    return E_tau
+
+
+def compute_E_mu_2(mu_N, lambda_N):
+    E_mu_2 = mu_N**2 + 1/lambda_N
+
+    return E_mu_2
+
+
+def compute_E_log_tau(a_N, b_N):
+    E_log_tau = psi(a_N) - np.log(b_N)
+
+    return E_log_tau
+
+
 def compute_elbo(D, a_0, b_0, mu_0, lambda_0, a_N, b_N, mu_N, lambda_N):
     N = len(D)
     x_mean = np.mean(D)
     x_2_sum = np.sum(D**2)
+    E_tau = compute_E_tau(a_N, b_N)
+    E_mu_2 = compute_E_mu_2(mu_N, lambda_N)
+    E_log_tau = compute_E_log_tau(a_N, b_N)
 
-    elbo = 0  # to delete
     # compute the elbo
+    # E[log p(D|mu, tau)]
+    E_log_p_D = N/2 * (E_log_tau - np.log(2*np.pi)) - 0.5 * \
+        E_tau * (x_2_sum - 2*N*x_mean*mu_N + N*E_mu_2)
+
+    # E[log p(mu, tau)]
+    E_log_p_mu_tau = a_0*np.log(b_0) + 0.5*np.log(lambda_0) - np.log(gamma_func(a_0)) - 0.5*np.log(
+        2*np.pi) - (a_0-0.5)*E_log_tau - b_0*E_tau - 0.5*lambda_0*E_tau*(E_mu_2 + mu_0**2 - 2*mu_0*mu_N)
 
     # Entropy of mu
     entropy_mu = norm.entropy(loc=mu_N, scale=1/np.sqrt(lambda_N))
     # Entropy of tau
     entropy_tau = gamma.entropy(a=a_N, scale=1/b_N)
+
+    elbo = E_log_p_D + E_log_p_mu_tau + entropy_mu + entropy_tau
 
     return elbo
 
@@ -39,11 +68,11 @@ def CAVI(D, a_0, b_0, mu_0, lambda_0, iter=5):
         # update the values for the variational parameters
         lambda_N = (lambda_0 + N) * E_tau
 
-        E_mu_2 = 1 / lambda_N + mu_N**2
+        E_mu_2 = compute_E_mu_2(mu_N, lambda_N)
         b_N = b_0 + 0.5 * (x_2_sum + N*E_mu_2 - 2*N*E_mu*x_mean +
                            lambda_0*(E_mu_2 - 2*E_mu*mu_0 + mu_0**2))
 
-        E_tau = a_N / b_N
+        E_tau = compute_E_tau(a_N, b_N)
 
         b_Ns.append(b_N)
         lambda_Ns.append(lambda_N)
@@ -65,7 +94,6 @@ def compute_z_exact(mus, taus, a_, b_, mu_, lambda_):
 
 
 def compute_z_cavi(mus, taus, a_, b_, mu_, lambda_):
-    z = np.zeros((len(mus), len(taus)))
     pTau = gamma(a=a_, loc=0, scale=1/b_)
     pMu = norm(loc=mu_, scale=1/np.sqrt(lambda_))
     z = np.outer(pMu.pdf(mus), pTau.pdf(taus))
@@ -123,7 +151,7 @@ plt.show()
 # Plot ELBOs
 fig, axs = plt.subplots(1, 3, figsize=(12, 4))
 for i in range(3):
-    axs[i].plot(elbos[i])
+    axs[i].plot(elbos_list[i])
     axs[i].set_xlabel('Iteration')
     axs[i].set_ylabel('ELBO')
     axs[i].set_title(f'Dataset {i+1}')

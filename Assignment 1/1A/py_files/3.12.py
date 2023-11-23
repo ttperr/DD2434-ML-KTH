@@ -1,7 +1,7 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import gamma, norm
 from scipy.special import psi
+from scipy.special import gamma as gamma_func
 np.random.seed(14)
 
 
