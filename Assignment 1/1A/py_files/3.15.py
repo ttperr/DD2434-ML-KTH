@@ -26,12 +26,12 @@ def compute_elbo(D, a_0, b_0, mu_0, lambda_0, a_N, b_N, mu_N, lambda_N):
 
     # compute the elbo
     # E[log p(D|mu, tau)]
-    E_log_p_D = N/2 * (E_log_tau - np.log(2*np.pi)) - 0.5 * \
-        E_tau * (x_2_sum - 2*N*x_mean*mu_N + N*E_mu_2)
+    E_log_p_D = N/2 * E_log_tau - 0.5*E_tau * \
+        (x_2_sum - 2*N*x_mean*mu_N + N*E_mu_2)
 
     # E[log p(mu, tau)]
-    E_log_p_mu_tau = a_0*np.log(b_0) + 0.5*np.log(lambda_0) - np.log(gamma_func(a_0)) - 0.5*np.log(
-        2*np.pi) - (a_0-0.5)*E_log_tau - b_0*E_tau - 0.5*lambda_0*E_tau*(E_mu_2 + mu_0**2 - 2*mu_0*mu_N)
+    E_log_p_mu_tau = (a_0-0.5)*E_log_tau - b_0*E_tau - 0.5 * \
+        lambda_0*E_tau*(E_mu_2 + mu_0**2 - 2*mu_0*mu_N)
 
     # Entropy of mu
     entropy_mu = norm.entropy(loc=mu_N, scale=1/np.sqrt(lambda_N))
