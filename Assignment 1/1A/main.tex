@@ -482,7 +482,15 @@ The code is in appendix \ref{appendix:code.3.15}.
 
 \subsection*{Question 4.16}
 
-According to the Hoffman paper, the local hidden variables are ...
+According to the Hoffman paper, the local hidden variables are defined by the model where the distribution of each observation $x_n$ only depends on its corresponding local variable $z_n$ and the global variables $\beta_{1:K}$.
+Therefore, we can write:
+\begin{equation}
+    p(x, z, \beta | alpha) = p(\beta | \alpha) \prod_{n=1}^{N}p(x_n, z_n | \beta)
+\end{equation}
+Because:
+\begin{equation}
+    p(x_n, z_n | x_{-n}, z_{-n}, \beta, \alpha) = p(x_n, z_n | \beta, \alpha)
+\end{equation}
 
 \subsection*{Question 4.17}
 
