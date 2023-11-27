@@ -501,11 +501,19 @@ And here we recall that we have:
 Therefore we have:
 \begin{equation}
     \begin{split}
-         & \mathbb{E}_{q(\theta, z, \beta)}[\log p(w, \theta, z, \beta)]                                                                                                                                                             \\
-         & = \mathbb{E}_{q(\theta, z, \beta)}\left[\sum_{k=1}^{K}\log p(\beta_k) + \sum_{d=1}^{D}\log p(\theta_d) + \sum_{d=1}^{D}\sum_{n=1}^{N}\log p(z_{dn}|\theta_d)p(w_{dn}|\beta_{z_{dn}})\right]                               \\
-         & \qquad\qquad - \mathbb{E}_{q(\theta, z, \beta)}\left[\sum_{k=1}^{K}\log q(\beta_k) + \sum_{d=1}^{D}\log q(\theta_d) + \sum_{d=1}^{D}\sum_{n=1}^{N}\log q(z_{dn}|\theta_d) + \log q(w_{dn}|\beta_{z_{dn}})\right]          \\
-         & = \sum_{k=1}^{K}\mathbb{E}_{q(\beta_k)}[\log p(\beta_k)] + \sum_{d=1}^{D}\mathbb{E}_{q(\theta_d)}[\log p(\theta_d)] + \sum_{d=1}^{D}\sum_{n=1}^{N}\mathbb{E}_{q(z_{dn})}[\log p(z_{dn}|\theta_d) + \log p(w_{dn}|\beta_{z_{dn}})] \\
-         & \qquad\qquad + \sum_{k=1}^{K}\mathbb{H}_q[\beta_k] + \sum_{d=1}^{D}\mathbb{H}_q[\theta_d] + \sum_{d=1}^{D}\sum_{n=1}^{N}\mathbb{H}_q[z_{dn}|\theta_d] + \mathbb{H}_q[w_{dn}|\beta_{z_{dn}}]                               \\
+         & \mathbb{E}_{q(\theta, z, \beta)}[\log p(w, \theta, z, \beta)]                                                                                                                                                                                         \\
+         & = \mathbb{E}_{q(\theta, z, \beta)}\left[\sum_{k=1}^{K}\log p(\beta_k) + \sum_{d=1}^{D}\log p(\theta_d) + \sum_{d=1}^{D}\sum_{n=1}^{N}\log p(z_{dn}|\theta_d)p(w_{dn}|\beta_{z_{dn}})\right]                                                           \\
+         & \qquad\qquad - \mathbb{E}_{q(\theta, z, \beta)}\left[\sum_{k=1}^{K}\log q(\beta_k) + \sum_{d=1}^{D}\log q(\theta_d) + \sum_{d=1}^{D}\sum_{n=1}^{N}\log q(z_{dn}|\theta_d) + \log q(w_{dn}|\beta_{z_{dn}})\right]                                      \\
+         & = \sum_{k=1}^{K}\sum_{\nu}\mathbb{E}_{q(\beta_{k\nu})}[\log p(\beta_{k\nu})] + \sum_{d=1}^{D}\mathbb{E}_{q(\theta_d)}[\log p(\theta_d)] + \sum_{d=1}^{D}\sum_{n=1}^{N}\mathbb{E}_{q(z_{dn})}[\log p(z_{dn}|\theta_d) + \log p(w_{dn}|\beta_{z_{dn}})] \\
+         & \qquad\qquad + \sum_{k=1}^{K}\mathbb{H}_q[\beta_k] + \sum_{d=1}^{D}\mathbb{H}_q[\theta_d] + \sum_{d=1}^{D}\sum_{n=1}^{N}\mathbb{H}_q[z_{dn}|\theta_d] + \mathbb{H}_q[w_{dn}|\beta_{z_{dn}}]                                                           \\
+    \end{split}
+\end{equation}
+Using Hoffman updates equations, we can write:
+\begin{equation}
+    \begin{split}
+        \lambda_k & = \eta + \sum_{d=1}^{D}\sum_{n=1}^{N}z_{dn}^k w_{dn} \\
+        \gamma_d  & = \alpha + \sum_{n=1}^{N}z_{dn}                      \\
+        \phi_{dn} & = \log \beta_{k,w_{dn}} + \log \theta_{dk}
     \end{split}
 \end{equation}
 
