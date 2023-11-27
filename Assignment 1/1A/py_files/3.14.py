@@ -5,7 +5,7 @@ def compute_exact_posterior(D, a_0, b_0, mu_0, lambda_0):
 
     mu_prime = (lambda_0 * mu_0 + N * x_mean) / (lambda_0 + N)
     lambda_prime = lambda_0 + N
-    a_prime = a_0 + N / 2
+    a_prime = a_0 + (N-1) / 2
     b_prime = b_0 + 0.5 * (np.sum(D**2) +
                            lambda_0 * mu_0**2 - lambda_prime * mu_prime**2)
 
