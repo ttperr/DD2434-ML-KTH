@@ -528,7 +528,7 @@ Using Hoffman updates equations, we can write:
 And by using the expectations given in the Hoffman paper, we can write:
 \begin{equation}
     \begin{split}
-        \sum_{k=1}^{K}\mathbb{E}_{q(\beta_{k})}[\log p(\beta_{k})] & = \sum_{k=1}^{K}\sum_{\nu=1}^{W}(\eta-1)\mathbb{E}_{q(\beta_{kv})}[\log \beta_{k\nu}]                                   \\
+        \sum_{k=1}^{K}\mathbb{E}_{q(\beta_{k})}[\log p(\beta_{k})] & = \sum_{k=1}^{K}\sum_{\nu=1}^{W}(\eta-1)\mathbb{E}_{q(\beta_{k\nu})}[\log \beta_{k\nu}]                                 \\
                                                                    & = \sum_{k=1}^{K}\sum_{\nu=1}^{W}(\eta-1)\left(\Psi(\lambda_{k\nu}) - \Psi\left(\sum_{y=1}^{W}\lambda_{ky}\right)\right) \\
     \end{split}
 \end{equation}
@@ -546,7 +546,8 @@ And by using the expectations given in the Hoffman paper, we can write:
 \end{equation}
 \begin{equation}
     \begin{split}
-        \sum_{d=1}^{D}\sum_{n=1}^{N}\mathbb{E}_{q(z_{dn}),q(\beta_{z_{dn}})}[\log p(w_{dn}|\beta_{z_{dn}})] & =
+        \sum_{d=1}^{D}\sum_{n=1}^{N}\mathbb{E}_{q(z_{dn}),q(\beta_{z_{dn}})}[\log p(w_{dn}|\beta_{z_{dn}})] & = \sum_{d=1}^{D}\sum_{n=1}^{N}\sum_{k=1}^{K}\sum_{\nu=1}^{W}w_{dn}^k\mathbb{E}_{q(z_{dn})}[z_{dn}^k]\mathbb{E}_{q(\beta_{k\nu})}[\log \beta_{k\nu}]            \\
+                                                                                                            & = \sum_{d=1}^{D}\sum_{n=1}^{N}\sum_{k=1}^{K}\sum_{\nu=1}^{W}w_{dn}^k\phi_{dn}^k\left(\Psi(\lambda_{k\nu}) - \Psi\left(\sum_{y=1}^{W}\lambda_{ky}\right)\right) \\
     \end{split}
 \end{equation}
 And the entropies can be found on wikipedia.
