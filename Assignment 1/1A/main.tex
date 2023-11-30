@@ -550,17 +550,40 @@ And by using the expectations given in the Hoffman paper, we can write:
                                                                                                             & = \sum_{d=1}^{D}\sum_{n=1}^{N}\sum_{k=1}^{K}\sum_{\nu=1}^{W}w_{dn}^k\phi_{dn}^k\left(\Psi(\lambda_{k\nu}) - \Psi\left(\sum_{y=1}^{W}\lambda_{ky}\right)\right) \\
     \end{split}
 \end{equation}
-And the entropies can be found on wikipedia.
+And the entropies can be found on Wikipedia.
 
 \subsection*{Question 4.19}
 
 \section{BBVI}
 
 \subsection*{Question 5.20}
+We have the simple model:
+\begin{equation}
+    \begin{split}
+        X|\theta & \thicksim \mathcal{N}(\theta, \sigma^2) \\
+        \theta   & \thicksim Gamma(\alpha, \beta)
+    \end{split}
+\end{equation}
+With $\alpha$, $\beta$ and $\sigma^2$ known.
+Now, we will derive the gradient estimate w.r.t. $\nu$ without Rao-Blackwellization using one sample $z \sim q_\nu(\theta)$, $q_\nu(\theta) = LogNormal(\nu, \epsilon^2)$. We recall the formula:
+\begin{equation}
+    \nabla_\lambda\mathcal{L} \approx \frac{1}{S}\sum_{s=1}^{S}\nabla_\lambda \log q(z_s|\lambda) \left(\log p(x, z_s) - \log q(z_s|\lambda)\right)
+\end{equation}
+Where $z_s \sim q(z|\lambda)$. Therefore, here we have:
+\begin{equation}
+    \begin{split}
+        \nabla_\nu\mathcal{L} & \approx \nabla_\nu \log q(z|\nu) \left(\log p(x, z) - \log q(z|\nu)\right)                                                                                                                                                       \\
+                              & \approx \nabla_\nu\log \left(\frac{\exp\left(-\frac{(\log z - \nu)^2}{2\epsilon^2}\right)}{z\epsilon\sqrt{2\pi}}\right)\left(\log\left(\frac{\exp\left(-\frac{(x-\theta)^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}}\right) \right. \\
+                              & \qquad\qquad \left. +\log\left(\frac{\beta^\alpha \theta^{\alpha-1} e^{-\beta \theta}}{\Gamma(\alpha)}\right) -\log \left(\frac{\exp\left(-\frac{(\log z - \nu)^2}{2\epsilon^2}\right)}{z\epsilon\sqrt{2\pi}}\right)\right)      \\
+                              & \approx \nabla_\nu\left(-\frac{(\log z - \nu)^2}{2\epsilon^2}\right)\left(-\frac{(x-\theta)^2}{2\sigma^2} - \log\left(\sigma\sqrt{2\pi}\right) \right.                                                                           \\
+                              & \qquad\qquad \left. -\beta\theta +(\alpha-1)\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right) +\frac{(\log z - \nu)^2}{2\epsilon^2} +\log\left(z\epsilon\sqrt{2\pi}\right)\right)                                 \\
+                              & \approx \frac{\log z - \nu}{\epsilon^2}\left(\frac{(\sigma(\log z - \nu))^2-(\epsilon(x-\theta))^2}{2\sigma^2\epsilon^2} +\log\left(\frac{z\epsilon}{\sigma}\right) \right.                                                      \\
+                              & \qquad\qquad \left. -\beta\theta +(\alpha-1)\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right)\right)
+    \end{split}
+\end{equation}
 
 \newpage
 \appendix
-
 \section{Appendix}
 \subsection{Question 3.12}\label{appendix:code.3.12}
 \lstinputlisting[label = {alg:3.12}]{py_files/3.12.py}
