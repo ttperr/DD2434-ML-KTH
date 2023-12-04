@@ -572,13 +572,13 @@ Now, we will derive the gradient estimate w.r.t. $\nu$ without Rao-Blackwellizat
 Where $z_s \sim q(z|\lambda)$. Therefore, here we have:
 \begin{equation}
     \begin{split}
-        \nabla_\nu\mathcal{L} & \approx \nabla_\nu \log q(z|\nu) \left(\log p(x, z) - \log q(z|\nu)\right)                                                                                                                                                       \\
-                              & \approx \nabla_\nu\log \left(\frac{\exp\left(-\frac{(\log z - \nu)^2}{2\epsilon^2}\right)}{z\epsilon\sqrt{2\pi}}\right)\left(\log\left(\frac{\exp\left(-\frac{(x-\theta)^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}}\right) \right. \\
-                              & \qquad\qquad \left. +\log\left(\frac{\beta^\alpha \theta^{\alpha-1} e^{-\beta \theta}}{\Gamma(\alpha)}\right) -\log \left(\frac{\exp\left(-\frac{(\log z - \nu)^2}{2\epsilon^2}\right)}{z\epsilon\sqrt{2\pi}}\right)\right)      \\
-                              & \approx \nabla_\nu\left(-\frac{(\log z - \nu)^2}{2\epsilon^2}\right)\left(-\frac{(x-\theta)^2}{2\sigma^2} - \log\left(\sigma\sqrt{2\pi}\right) \right.                                                                           \\
-                              & \qquad\qquad \left. -\beta\theta +(\alpha-1)\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right) +\frac{(\log z - \nu)^2}{2\epsilon^2} +\log\left(z\epsilon\sqrt{2\pi}\right)\right)                                 \\
-                              & \approx \frac{\log z - \nu}{\epsilon^2}\left(\frac{(\sigma(\log z - \nu))^2-(\epsilon(x-\theta))^2}{2\sigma^2\epsilon^2} +\log\left(\frac{z\epsilon}{\sigma}\right) \right.                                                      \\
-                              & \qquad\qquad \left. -\beta\theta +(\alpha-1)\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right)\right)
+        \nabla_\nu\mathcal{L} & \approx \nabla_\nu \log q(z|\nu) \left(\log p(x, z) - \log q(z|\nu)\right)                                                                                                                                                                 \\
+                              & \approx \nabla_\nu\log \left(\frac{\exp\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)}{\theta\epsilon\sqrt{2\pi}}\right)\left(\log\left(\frac{\exp\left(-\frac{(x-\theta)^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}}\right) \right. \\
+                              & \qquad\qquad \left. +\log\left(\frac{\beta^\alpha \theta^{\alpha-1} e^{-\beta \theta}}{\Gamma(\alpha)}\right) -\log \left(\frac{\exp\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)}{\theta\epsilon\sqrt{2\pi}}\right)\right)      \\
+                              & \approx \nabla_\nu\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)\left(-\frac{(x-\theta)^2}{2\sigma^2} - \log\left(\sigma\sqrt{2\pi}\right) \right.                                                                                \\
+                              & \qquad\qquad \left. -\beta\theta +(\alpha-1)\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right) +\frac{(\log \theta - \nu)^2}{2\epsilon^2} +\log\left(\theta\epsilon\sqrt{2\pi}\right)\right)                                 \\
+                              & \approx \frac{\log \theta - \nu}{\epsilon^2}\left(\frac{(\sigma(\log \theta - \nu))^2-(\epsilon(x-\theta))^2}{2\sigma^2\epsilon^2} +\log\left(\frac{\epsilon}{\sigma}\right) \right.                                                       \\
+                              & \qquad\qquad \left. -\beta\theta +\alpha\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right)\right)
     \end{split}
 \end{equation}
 
