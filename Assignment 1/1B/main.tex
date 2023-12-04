@@ -182,7 +182,7 @@ Therefore, we have $q^*(\lambda_k) = Gamma\left(\alpha + \sum_{n=1}^{N}S_n r_{n,
 \end{equation}
 
 \section{VAE image generation}
-\subsection*{Question 5.1}
+\subsection*{Question 5.1 (in the notebook)}
 Our objective function is ELBO: $E_{q(z|x)}\big[\log \frac{p(x,z)}{q(z|x)}\big]$ \\
 We will show that ELBO can be rewritten as $E_{q(z|x)}\big(\log p(x|z)\big) - D_{KL} \big( q(z|x) \lvert \rvert  p(z)\big)$
 We have:
@@ -194,7 +194,7 @@ We have:
                                                  & = E_{q(z|x)}\big[\log p(x|z)\big] - D_{KL} \big( q(z|x) \lvert \rvert  p(z)\big)
 \end{align*}
 
-\subsection*{Question 5.2}
+\subsection*{Question 5.2 (in the notebook)}
 Consider the second term: $- D_{KL} \big( q(z|x) \lvert \rvert  p(z)\big)$
 
 \textit{\textbf{Question :} Kullback–Leibler divergence can be computed using the closed-form analytic expression when both the variational and the prior distributions are Gaussian. Write down this KL divergence in terms of the parameters of the prior and the variational distributions. Your solution should consider a generic case where the latent space is K-dimensional.}
@@ -227,6 +227,9 @@ Therefore:
 \end{equation}
 
 The rest of tht implementation could be find in the appendix \ref{appendix:1.2}.
+
+\section{Reparameterization and the score function}
+\subsection{Question 3.4}
 
 \newpage
 \appendix
