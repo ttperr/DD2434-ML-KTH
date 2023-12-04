@@ -181,11 +181,58 @@ Therefore, we have $q^*(\lambda_k) = Gamma\left(\alpha + \sum_{n=1}^{N}S_n r_{n,
   \end{split}
 \end{equation}
 
+\section{VAE image generation}
+\subsection*{Question 5.1}
+Our objective function is ELBO: $E_{q(z|x)}\big[\log \frac{p(x,z)}{q(z|x)}\big]$ \\
+We will show that ELBO can be rewritten as $E_{q(z|x)}\big(\log p(x|z)\big) - D_{KL} \big( q(z|x) \lvert \rvert  p(z)\big)$
+We have:
+\begin{align*}
+  E_{q(z|x)}\big[\log \frac{p(x,z)}{q(z|x)}\big] & = E_{q(z|x)}\big[\log p(x,z) - \log q(z|x)\big]                                                     \\
+                                                 & = E_{q(z|x)}\big[\log p(x|z) + \log p(z) - \log q(z|x)\big]                                         \\
+                                                 & = E_{q(z|x)}\big[\log p(x|z)\big] + E_{q(z|x)}\big[\log p(z)\big] - E_{q(z|x)}\big[\log q(z|x)\big] \\
+                                                 & = E_{q(z|x)}\big[\log p(x|z)\big] - E_{q(z|x)}\big[\log \frac{q(z|x)}{p(z)}\big]                    \\
+                                                 & = E_{q(z|x)}\big[\log p(x|z)\big] - D_{KL} \big( q(z|x) \lvert \rvert  p(z)\big)
+\end{align*}
+
+\subsection*{Question 5.2}
+Consider the second term: $- D_{KL} \big( q(z|x) \lvert \rvert  p(z)\big)$
+
+\textit{\textbf{Question :} Kullback–Leibler divergence can be computed using the closed-form analytic expression when both the variational and the prior distributions are Gaussian. Write down this KL divergence in terms of the parameters of the prior and the variational distributions. Your solution should consider a generic case where the latent space is K-dimensional.}
+
+We have:
+\begin{align*}
+  D_{KL} \left(q(z|x) \lvert\rvert p(z)\right) & = \int q(z|x) \log \frac{q(z|x)}{p(z)} \,dz
+\end{align*}
+
+And we also have:
+\begin{equation}
+  \begin{split}
+    q(z|x) & = \mathcal{N}(z|\mu(x), \sigma(x)) = \prod_{i=1}^{K}\left(\frac{1}{\sigma_i\sqrt{2\pi}} \exp\left(-\frac{(z_i - \mu_i)^2}{2\sigma^2}\right)\right)                                    \\
+    p(z)   & = \mathcal{N}(z|0, I) = \left(\frac{1}{\sqrt{2\pi}}\right)^K \exp\left(-\frac{1}{2}z^Tz\right) = \prod_{i=1}^{K}\left(\frac{1}{\sqrt{2\pi}}\right) \exp\left(-\frac{1}{2}z_i^2\right)
+  \end{split}
+\end{equation}
+
+Therefore:
+\begin{equation}
+  \begin{split}
+    D_{KL} \left(q(z|x) \lvert\rvert p(z)\right) & = \int q(z|x) \log \frac{q(z|x)}{p(z)} \,dz                                                                                                                                                                                         \\
+                                                 & = \int q(z|x) \log \frac{\prod_{i=1}^{K} \left(2\pi\sigma_i^2\right)^{-\frac{1}{2}} \exp\left(-\frac{(z_i - \mu_i)^2}{2\sigma_i^2}\right)}{\prod_{i=1}^{K} \left(2\pi\right)^{-\frac{1}{2}} \exp\left(-\frac{z_i^2}{2}\right)} \,dz \\
+                                                 & = \int q(z|x)  \left(\sum_{i=1}^{K} -\log (\sigma_i) - \frac{(z_i - \mu_i)^2}{2\sigma_i^2} + \frac{z_i^2}{2}\right) \,dz                                                                                                            \\
+                                                 & = \mathbb{E}_{q(z|x)}\left[\sum_{i=1}^{K} -\log (\sigma_i) - \frac{(z_i - \mu_i)^2}{2\sigma_i^2} + \frac{z_i^2}{2}\right]                                                                                                           \\
+                                                 & = \sum_{i=1}^{K} -\log(\sigma_i) - \frac{\mathbb{E}_{q(z|x)}\left[(z_i - \mu_i)^2\right]}{2\sigma_i^2} + \frac{\mathbb{E}_{q(z|x)}\left[z_i^2\right]}{2}                                                                            \\
+                                                 & = \sum_{i=1}^{K} -\log(\sigma_i) - \frac{\sigma_i^2}{2\sigma_i^2} + \frac{\mathbb{E}_{q(z|x)}[z_i^2]}{2}                                                                                                                            \\
+                                                 & = \sum_{i=1}^{K} -\log(\sigma_i) - \frac{1}{2} + \frac{\sigma_i^2 + \mu_i^2}{2}                                                                                                                                                     \\
+    D_{KL} \left(q(z|x) \lvert\rvert p(z)\right) & = \frac{1}{2} \sum_{i=1}^{K} \left(\sigma_i^2 + \mu_i^2 - \log(\sigma_i^2) - 1\right)
+  \end{split}
+\end{equation}
+
+The implementation could be find in the appendix \ref{appendix:1B.loss}.
+
 \newpage
 \appendix
 
 \section{Appendix}
-\subsection{Question 1.2}\label{appendix:code.1.2}
-\lstinputlisting[label = {alg:3.12}]{py_files/1.2.py}
+\subsection{VAE image generation}\label{appendix:1B.loss}
+\lstinputlisting[label = {alg:1B.loss}]{py_files/1B.loss.py}
 
 \end{document}
