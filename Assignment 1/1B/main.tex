@@ -226,13 +226,20 @@ Therefore:
   \end{split}
 \end{equation}
 
-The implementation could be find in the appendix \ref{appendix:1B.loss}.
+The rest of tht implementation could be find in the appendix \ref{appendix:1B}.
 
 \newpage
 \appendix
 
 \section{Appendix}
-\subsection{VAE image generation}\label{appendix:1B.loss}
+\subsection{VAE image generation}\label{appendix:1B}
+\subsubsection{Reparameterization function}\label{appendix:1B.reparam}
+\lstinputlisting[label = {alg:1B.reparam}]{py_files/1B.reparam.py}
+\subsubsection{Loss function}\label{appendix:1B.loss}
 \lstinputlisting[label = {alg:1B.loss}]{py_files/1B.loss.py}
+\subsubsection{Generation from test data}\label{appendix:1B.gen_test}
+\lstinputlisting[label = {alg:1B.gen_test}]{py_files/1B.gen_test.py}
+\subsubsection{Generation from noise}\label{appendix:1B.gen}
+\lstinputlisting[label = {alg:1B.gen}]{py_files/1B.gen.py}
 
 \end{document}
