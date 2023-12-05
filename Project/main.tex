@@ -7,19 +7,7 @@
 \usepackage{hyperref} % Links
 \usepackage{amsmath} % Math
 \usepackage{amssymb} % Math
-\usepackage{listings} % Import code in appendix
-\usepackage{xcolor} % For coloring code
-% Listing Configuration
-\lstset{
-    language=Python,
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{blue},
-    stringstyle=\color{red},
-    commentstyle=\color{green},
-    showstringspaces=false,
-    breaklines=true,
-    frame=single
-}
+\usepackage{pdfpages} % Import pdf
 \usepackage{tikz} % Graph
 \usetikzlibrary{bayesnet}
 \usetikzlibrary{positioning}
@@ -75,7 +63,6 @@
 \newpage
 \appendix
 \section{Appendix}
-\subsection{Question 3.12}\label{appendix:code.3.12}
-\lstinputlisting[label = {alg:3.12}]{py_files/3.12.py}
+\subsection{Code}\label{appendix:code}
 
 \end{document}
