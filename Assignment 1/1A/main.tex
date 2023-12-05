@@ -59,7 +59,7 @@
 
 \section{Exponential Family}
 
-\subsection*{Question 1.1}
+\subsection{Question 1.1}
 
 \begin{equation}
     \begin{split}
@@ -74,7 +74,7 @@
 
 We can see that the distribution correspond to a \underline{Poisson distribution of parameter $\lambda$}.
 
-\subsection*{Question 1.2}
+\subsection{Question 1.2}
 
 \begin{equation}
     \begin{split}
@@ -88,7 +88,7 @@ We can see that the distribution correspond to a \underline{Poisson distribution
 
 We can see that the distribution correspond to a \underline{Gamma distribution of parameters $\alpha$ and $\beta$}.
 
-\subsection*{Question 1.3}
+\subsection{Question 1.3}
 
 \begin{equation}
     \begin{split}
@@ -102,7 +102,7 @@ We can see that the distribution correspond to a \underline{Gamma distribution o
 
 We can see that the distribution correspond to a \underline{Normal distribution of parameters $\mu$ and $\sigma^2$}.
 
-\subsection*{Question 1.4}
+\subsection{Question 1.4}
 
 \begin{equation}
     \begin{split}
@@ -116,7 +116,7 @@ We can see that the distribution correspond to a \underline{Normal distribution 
 
 We can see that the distribution correspond to a \underline{Exponential distribution of parameter $\lambda$}.
 
-\subsection*{Question 1.5}
+\subsection{Question 1.5}
 
 \begin{equation}
     \begin{split}
@@ -132,7 +132,7 @@ We can see that the distribution correspond to a \underline{Beta distribution of
 
 \section{Dependencies in a Directed Graphical Model}
 
-\subsection*{Question 2.6}
+\subsection{Question 2.6}
 
 \begin{figure}[H]
     \centering
@@ -159,7 +159,7 @@ Then, if we use the method using the d-separation, we obtain this :
 
 Therefore, we can see that $W_{d,n} \perp W_{d,n+1} | \theta_d, \beta_{1:K}$ is \underline{true}.
 
-\subsection*{Question 2.7}
+\subsection{Question 2.7}
 
 The Bayes net take this form (with d-separation marks) :
 \begin{figure}[H]
@@ -170,7 +170,7 @@ The Bayes net take this form (with d-separation marks) :
 
 Therefore, we can see that $\theta_{d} \perp \theta_{d+1} | Z_{d,1:N}$ is \underline{false}.
 
-\subsection*{Question 2.8}
+\subsection{Question 2.8}
 
 The Bayes net take this form (with d-separation marks) :
 \begin{figure}[H]
@@ -181,7 +181,7 @@ The Bayes net take this form (with d-separation marks) :
 
 Therefore, we can see that $\theta_{d} \perp \theta_{d+1} | \alpha, Z_{1:D,1:N}$ is \underline{true}.
 
-\subsection*{Question 2.9}
+\subsection{Question 2.9}
 
 \begin{figure}[H]
     \centering
@@ -199,7 +199,7 @@ The Bayes net take this form (with d-separation marks) :
 
 Therefore, we can see that $W_{d,n} \perp W_{d,n+1} | \Lambda_d, \beta_{1:K}$ is \underline{false}.
 
-\subsection*{Question 2.10}
+\subsection{Question 2.10}
 
 The Bayes net take this form (with d-separation marks) :
 \begin{figure}[H]
@@ -210,7 +210,7 @@ The Bayes net take this form (with d-separation marks) :
 
 Therefore, we can see that $\theta_{d} \perp \theta_{d+1} | Z_{d,1:N}, Z_{d+1,1:N}$ is \underline{false}.
 
-\subsection*{Question 2.11}
+\subsection{Question 2.11}
 
 The Bayes net take this form (with d-separation marks) :
 \begin{figure}[H]
@@ -230,7 +230,7 @@ Therefore, we can see that $\Lambda_{d} \perp \Lambda_{d+1} | \Phi, Z_{1:D,1:N}$
     \label{fig:fig3}
 \end{figure}
 
-\subsection*{Question 3.12}
+\subsection{Question 3.12}
 
 In the bishop book, we can see that :
 
@@ -255,7 +255,7 @@ Then, by using the code in appendix \ref{appendix:CAVI}, we obtain :
     \label{fig:3.12}
 \end{figure}
 
-\subsection*{Question 3.13}
+\subsection{Question 3.13}
 
 Let's find the ML estimates of $\mu$ and $\tau$.
 We know that $\log(q^*(\mu)) = \mathbb{E}_{-\mu}[\log p(X, \mu, \tau)]$.
@@ -350,7 +350,7 @@ And therefore:
 
 Which define the ML estimates. The implementation is in the code in appendix \ref{appendix:CAVI}.
 
-\subsection*{Question 3.14}
+\subsection{Question 3.14}
 
 The posterior is defined as $p(\mu, \tau|x)$. Then, we can write :
 \begin{equation}
@@ -381,7 +381,7 @@ Therefore, if we plot the contour for each datasets we obtain :
 
 The rest of the answer is in the code in appendix \ref{appendix:CAVI}.
 
-\subsection*{Question 3.15}
+\subsection{Question 3.15}
 
 The equation (10.24) in the Bishop is the mean-field approximation which is :
 \begin{equation}
@@ -469,7 +469,7 @@ The code is in appendix \ref{appendix:CAVI}.
 
 \section{SVI - LDA}
 
-\subsection*{Question 4.16}
+\subsection{Question 4.16}
 
 According to the Hoffman paper, the local hidden variables are defined by the model where the distribution of each observation $x_n$ only depends on its corresponding local variable $z_n$ and the global variables $\beta_{1:K}$.
 Therefore, we can write:
@@ -481,11 +481,11 @@ Because:
     p(x_n, z_n | x_{-n}, z_{-n}, \beta, \alpha) = p(x_n, z_n | \beta, \alpha)
 \end{equation}
 
-\subsection*{Question 4.17}
+\subsection{Question 4.17}
 
 In this figure the global hidden variables are the topics $\beta_{1:K}$ and the local hidden variables are the topic proportions $\theta_d$ and the topic assignments $z_{d,1:N}$.
 
-\subsection*{Question 4.18}
+\subsection{Question 4.18}
 
 The ELBO formula is:
 \begin{equation}
@@ -541,12 +541,12 @@ And by using the expectations given in the Hoffman paper, we can write:
 \end{equation}
 And the entropies can be found on Wikipedia.
 
-\subsection*{Question 4.19}
+\subsection{Question 4.19}
 The code is in appendix \ref{appendix:SVI}.
 
 \section{BBVI}
 
-\subsection*{Question 5.20}
+\subsection{Question 5.20}
 We have the simple model:
 \begin{equation}
     \begin{split}
