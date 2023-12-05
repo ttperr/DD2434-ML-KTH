@@ -9,6 +9,7 @@
 \usepackage{amssymb} % Math
 \usepackage{bbold} % Math (for indicatrice function)
 \usepackage{listings} % Import code in appendix
+\usepackage{pdfpages} % Include PDF
 \usepackage{xcolor} % For coloring code
 % Listing Configuration
 \lstset{
@@ -270,13 +271,7 @@ For particular cases, the score function may actually decrease the variance. The
 
 \section{Appendix}
 \subsection{VAE image generation}\label{appendix:1.2}
-\subsubsection{Reparameterization function}\label{appendix:1.2-reparam}
-\lstinputlisting[label = {alg:1.2-reparam}]{py_files/1.2-reparam.py}
-\subsubsection{Loss function}\label{appendix:1.2-loss}
-\lstinputlisting[label = {alg:1.2-loss}]{py_files/1.2-loss.py}
-\subsubsection{Generation from test data}\label{appendix:1.2-gen_test}
-\lstinputlisting[label = {alg:1.2-gen_test}]{py_files/1.2-gen_test.py}
-\subsubsection{Generation from noise}\label{appendix:1.2-gen}
-\lstinputlisting[label = {alg:1.2-gen}]{py_files/1.2-gen.py}
+\includepdf[pages=-]{}
+
 
 \end{document}
