@@ -8,6 +8,7 @@
 \usepackage{amsmath} % Math
 \usepackage{amssymb} % Math
 \usepackage{listings} % Import code in appendix
+\usepackage{pdfpages} % Import pdf
 \usepackage{xcolor} % For coloring code
 % Listing Configuration
 \lstset{
@@ -257,7 +258,7 @@ In the bishop book, we can see that :
     p(\tau) = \text{Gam}(\tau|a_0, b_0)
 \end{equation}
 
-Then, by using the code in appendix \ref{appendix:code.3.12}, we obtain :
+Then, by using the code in appendix \ref{appendix:CAVI}, we obtain :
 
 \begin{figure}[H]
     \centering
@@ -359,7 +360,7 @@ And therefore:
     \end{split}
 \end{equation}
 
-Which define the ML estimates. The implementation is in the code in appendix \ref{appendix:code.3.13}.
+Which define the ML estimates. The implementation is in the code in appendix \ref{appendix:CAVI}.
 
 \subsection*{Question 3.14}
 
@@ -390,7 +391,7 @@ Therefore, if we plot the contour for each datasets we obtain :
     \label{fig:3.14}
 \end{figure}
 
-The rest of the answer is in the code in appendix \ref{appendix:code.3.14}.
+The rest of the answer is in the code in appendix \ref{appendix:CAVI}.
 
 \subsection*{Question 3.15}
 
@@ -476,7 +477,7 @@ And we obtain an elbo plot :
     \label{fig:3.15.2}
 \end{figure}
 
-The code is in appendix \ref{appendix:code.3.15}.
+The code is in appendix \ref{appendix:CAVI}.
 
 \section{SVI - LDA}
 
@@ -553,7 +554,7 @@ And by using the expectations given in the Hoffman paper, we can write:
 And the entropies can be found on Wikipedia.
 
 \subsection*{Question 4.19}
-The code is in appendix \ref{appendix:code.4.19}.
+The code is in appendix \ref{appendix:SVI}.
 
 \section{BBVI}
 
@@ -586,19 +587,8 @@ Where $z_s \sim q(z|\lambda)$. Therefore, here we have:
 \newpage
 \appendix
 \section{Appendix}
-\subsection{Question 3.12}\label{appendix:code.3.12}
-\lstinputlisting[label = {alg:3.12}]{py_files/3.12.py}
-
-\subsection{Question 3.13}\label{appendix:code.3.13}
-\lstinputlisting[label = {alg:3.13}]{py_files/3.13.py}
-
-\subsection{Question 3.14}\label{appendix:code.3.14}
-\lstinputlisting[label = {alg:3.14}]{py_files/3.14.py}
-
-\subsection{Question 3.15}\label{appendix:code.3.15}
-\lstinputlisting[label = {alg:3.15}]{py_files/3.15.py}
-
-\subsection{Question 4.19}\label{appendix:code.4.19}
-\lstinputlisting[label = {alg:4.19}]{py_files/4.19.py}
+\subsection{CAVI}\label{appendix:CAVI}
+\includepdf[pages=-]{py_files/1A-3-CAVI.pdf}
+\subsection{SVI}\label{appendix:SVI}
 
 \end{document}
