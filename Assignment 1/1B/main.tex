@@ -116,28 +116,23 @@ Wich means that $q^*(Z_n)$ is a categorical distribution with parameters $r_{n,k
 \noindent Let us compute $q^*(\mu_k)$:
 \begin{equation}
   \begin{split}
-    \log q^*(\mu_k) & \overset{+}{=} \mathbb{E}_{Z,\lambda}[\log p(X,S,Z = k,\lambda_k,\mu_k|\pi,\tau,\alpha,\beta,\nu,\rho)]                                                                                                                                                                              \\
-                    & \overset{+}{=} \mathbb{E}_{Z,\lambda}[\log p(X|Z = k,\mu_k,\tau) + \log p(\mu_k|\nu,\rho)]                                                                                                                                                                                           \\
-                    & = \mathbb{E}_{Z,\lambda}\left[\sum_{n=1}^{N}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) -\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right)\right] + \log \left(\frac{\rho}{2\pi}\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right) \\
-                    & \overset{+}{=} \sum_{n=1}^{N}r_{n,k}\left(\log \left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right)                                                                             \\
-                    & \overset{+}{=} \sum_{n=1}^{N}r_{n,k}\left(-\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right)                                                                                                                  \\
-                    & \overset{+}{=} - \frac{\tau\sum_{n=1}^{N}r_{n,k}}{2}\left(-2\mu_{k,0}x_{n,0} -2\mu_{k,1}x_{n,1} +\mu_{k,0}^2 +\mu_{k,1}^2\right) - \frac{\rho}{2}\left(-2\mu_{k,0}\nu_0 -2\mu_{k,1}\nu_1 +\mu_{k,0}^2 +\mu_{k,1}^2\right)
-  \end{split}
-\end{equation}
-We define $S = \frac{\rho}{\tau\sum_{n=1}^{N}r_{n,k}}$. Then we have:
-\begin{equation}
-  \begin{split}
-    \log q^*(\mu_k) & \overset{+}{=} -\frac{\tau\sum_{n=1}^{N}r_{n,k}}{2}\left[(S+N)\mu_{k,0}^2 + (S+N)\mu_{k,1}^2 \right.                                                                                      \\
-                    & \qquad\qquad \left. -2\mu_{k,0}(S\nu_0 + \sum_{n=1}^{N}x_{n,0}) -2\mu_{k,1}(S\nu_1 + \sum_{n=1}^{N}x_{n,1})\right]                                                                        \\
-                    & \overset{+}{=} -\frac{\tau\sum_{n=1}^{N}r_{n,k}}{2(S+N)}\left[\left(\mu_k - \frac{S\nu + \sum_{n=1}^{N}x_n}{S+N}\right)^T\left(\mu_k - \frac{S\nu + \sum_{n=1}^{N}x_n}{S+N}\right)\right]
+    \log q^*(\mu_k) & \overset{+}{=} \mathbb{E}_{Z,\lambda}[\log p(X,S,Z = k,\lambda_k,\mu_k|\pi,\tau,\alpha,\beta,\nu,\rho)]                                                                                                                                                                                  \\
+                    & \overset{+}{=} \mathbb{E}_{Z,\lambda}[\log p(X|Z = k,\mu_k,\tau) + \log p(\mu_k|\nu,\rho)]                                                                                                                                                                                               \\
+                    & = \mathbb{E}_{Z,\lambda}\left[\sum_{n=1}^{N}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) -\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right)\right] + \log \left(\frac{\rho}{2\pi}\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right)     \\
+                    & \overset{+}{=} \sum_{n=1}^{N}r_{n,k}\left(\log \left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right)                                                                                 \\
+                    & \overset{+}{=} \sum_{n=1}^{N}r_{n,k}\left(-\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right) - \frac{\rho}{2}\left((\mu_k - \nu)^T(\mu_k - \nu)\right)                                                                                                                      \\
+                    & = -\frac{\tau}{2}\left(\sum_{n=1}^{N}r_{n,k}\left(x_n^T x_n - 2 \mu_k^T x_n + \mu_k^T \mu_k\right)\right) - \frac{\rho}{2}\left(\mu_k^T \mu_k - 2 \nu \mu_k^T + \nu^T\nu\right)                                                                                                          \\
+                    & = -\frac{\tau}{2}\sum_{n=1}^{N}r_{n,k}x_n^T x_n + \tau \sum_{n=1}^{N}r_{n,k}\mu_k^T x_n -\frac{\tau}{2}\sum_{n=1}^{N}r_{n,k}\mu_k^T \mu_k - \frac{\rho}{2}\mu_k^T \mu_k + \rho \nu \mu_k^T - \frac{\rho}{2}\nu^T\nu                                                                      \\
+                    & = -\frac{\rho + \tau \sum_{n=1}^{N}r_{n,k}}{2}\mu_k^T \mu_k + \left(\rho \nu + \tau \sum_{n=1}^{N}r_{n,k}x_n\right)\mu_k^T - \frac{\rho}{2}\nu^T\nu                                                                                                                                      \\
+                    & = -\frac{\rho + \tau \sum_{n=1}^{N}r_{n,k}}{2}\left(\mu_k^T \mu_k - 2 \frac{\rho \nu + \tau \sum_{n=1}^{N}r_{n,k}x_n}{\rho + \tau \sum_{n=1}^{N}r_{n,k}}\mu_k^T\right) + \frac{\rho}{2}\nu^T\nu                                                                                          \\
+                    & \overset{+}{=} -\frac{\rho + \tau \sum_{n=1}^{N}r_{n,k}}{2}\left(\left(\mu_k - \frac{\rho \nu + \tau \sum_{n=1}^{N}r_{n,k}x_n}{\rho + \tau \sum_{n=1}^{N}r_{n,k}}\right)^T\left(\mu_k - \frac{\rho \nu + \tau \sum_{n=1}^{N}r_{n,k}x_n}{\rho + \tau \sum_{n=1}^{N}r_{n,k}}\right)\right) \\
   \end{split}
 \end{equation}
 Therefore, we have $q^*(\mu_k) = Normal\left(\mu^*, \rho^* \cdot I\right)$. And we can compute the expected value of $\mu_k$ and $\mu_k^2$ easily.
-
 \begin{equation}
   \begin{split}
-    \mu^*  & = \frac{S\nu + \sum_{n=1}^{N}x_n}{S+N}   = \frac{\rho\nu + \tau\sum_{n=1}^{N}r_{n,k}x_n}{\rho + N\tau\sum_{n=1}^{N}r_{n,k}} \\
-    \rho^* & = \frac{\tau\sum_{n=1}^{N}r_{n,k}}{S+N} = \frac{(\tau\sum_{n=1}^{N}r_{n,k})^2}{\rho + N\tau\sum_{n=1}^{N}r_{n,k}}
+    \mu^*  & = \frac{\rho \nu + \tau \sum_{n=1}^{N}r_{n,k}x_n}{\rho + \tau \sum_{n=1}^{N}r_{n,k}} \\
+    \rho^* & = \rho + \tau \sum_{n=1}^{N}r_{n,k}
   \end{split}
 \end{equation}
 And therefore:
