@@ -350,6 +350,27 @@ And therefore:
 
 Which define the ML estimates. The implementation is in the code in appendix \ref{appendix:CAVI}.
 
+The other way to find the ML estimates is by deriving the log-likelihood and setting the derivative to 0. Then, we obtain :
+\begin{equation}
+    \log p(X|\mu, \tau) = \frac{N}{2}\log\left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\sum_{n=1}^{N}(x_n - \mu)^2
+\end{equation}
+Then, we can derive with respect to $\mu$ and $\tau$ and set the derivatives to 0 :
+\begin{equation}
+    \begin{split}
+        \frac{\partial \log p(X|\mu, \tau)}{\partial \mu}  & = \tau\left(\sum_{n=1}^{N}x_n - N\mu\right) = 0                                                      \\
+        \frac{\partial \log p(X|\mu, \tau)}{\partial \tau} & = \frac{N}{2\tau} - \frac{1}{2}\left(\sum_{n=1}^{N}x_n^2 - 2\mu\sum_{n=1}^{N}x_n + N\mu^2\right) = 0 \\
+    \end{split}
+\end{equation}
+Therefore, we obtain :
+\begin{equation}
+    \begin{split}
+        \mu_{ML}  & = \frac{\sum_{n=1}^{N}x_n}{N} = \overline{x}     \\
+        \tau_{ML} & = \frac{N}{\sum_{n=1}^{N}(x_n - \overline{x})^2}
+    \end{split}
+\end{equation}
+And we found the same results as before.
+
+
 \subsection{Question 3.14}
 
 The posterior is defined as $p(\mu, \tau|x)$. Then, we can write :
