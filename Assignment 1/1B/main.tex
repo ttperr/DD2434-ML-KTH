@@ -96,11 +96,11 @@ Where:
 Here, the mean field approximation is not an approximation but an equality because $Z, \mu, \lambda$ are independent. Therefore we have:
 \begin{equation}
   \begin{split}
-    \log q^*(Z_n) & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n,S_n,Z_n,\lambda,\mu|\pi,\tau,\alpha,\beta,\nu,\rho)]                                                                                                                                                                       \\
-                  & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n|Z_n,\mu,\tau) + \log p(S_n|Z_n,\lambda) + \log p(Z_n|\pi)]                                                                                                                                                                 \\
-                  & = \mathbb{E}_{\mu}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) -\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right)\right]                                                                                                \\
-                  & \qquad\qquad + \mathbb{E}_{\lambda}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log(\pi_k) -\lambda_k + S_n\log(\lambda_k) - \log(S_n!)\right)\right]                                                                                                                   \\
-                  & \overset{+}{=} \sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) - \frac{\tau}{2}\mathbb{E}_{\mu}\left[(x_n - \mu_k)^T(x_n - \mu_k)\right] + \log(\pi_k) + \mathbb{E}_{\lambda}\left[-\lambda_k + S_n\log(\lambda_k)\right] - \log(S_n!)\right)
+    \log q^*(Z_n) & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n,S_n,Z_n,\lambda,\mu|\pi,\tau,\alpha,\beta,\nu,\rho)]                                                                                                                                                       \\
+                  & \overset{+}{=} \mathbb{E}_{\mu,\lambda}[\log p(X_n|Z_n,\mu,\tau) + \log p(S_n|Z_n,\lambda) + \log p(Z_n|\pi)]                                                                                                                                                 \\
+                  & = \mathbb{E}_{\mu}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log \left(\frac{\tau}{2\pi}\right) -\frac{\tau}{2}\left((x_n - \mu_k)^T(x_n - \mu_k)\right)\right)\right]                                                                                \\
+                  & \qquad\qquad + \mathbb{E}_{\lambda}\left[\sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(\log(\pi_k) -\lambda_k + S_n\log(\lambda_k) - \log(S_n!)\right)\right]                                                                                                   \\
+                  & \overset{+}{=} \sum_{k=1}^{K}\mathbb{1}_{\{Z_n = k\}}\left(- \frac{\tau}{2}\mathbb{E}_{\mu}\left[(x_n - \mu_k)^T(x_n - \mu_k)\right] + \log(\pi_k) - \mathbb{E}_{\lambda}\left[\lambda_k\right] + S_n \mathbb{E}_{\lambda}\left[\log(\lambda_k)\right]\right)
   \end{split}
 \end{equation}
 Now, if we take the entire expression that is multiplied by $\mathbb{1}_{\{Z_n = k\}}$ and we call it $u_{n,k}$, we have:
