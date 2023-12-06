@@ -2,7 +2,7 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{fancyhdr} % Header
 \usepackage{lastpage}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
 \usepackage{float} % Floating position
 \usepackage{hyperref} % Links
 \usepackage{amsmath} % Math
@@ -432,10 +432,9 @@ If we compute the first term we have:
 And the second one is:
 \begin{equation}
     \begin{split}
-        \mathbb{E}_{q(\mu),q(\tau)}[\log p(\mu, \tau)] & = \mathbb{E}_{q(\mu),q(\tau)}\left[\log\left(\frac{b_0^{a_0} \sqrt{\lambda_0}}{\Gamma(a_0)\sqrt{2\pi}}\right) + (a_0 - \frac{1}{2})\log \tau - b_0\tau - \frac{\lambda_0\tau(\mu - \mu_0)^2}{2}\right]                              \\
-                                                       & = \log\left(\frac{b_0^{a_0} \sqrt{\lambda_0}}{\Gamma(a_0)\sqrt{2\pi}}\right) + (a_0 - \frac{1}{2})\mathbb{E}_{q(\tau)}[\log \tau] - b_0\mathbb{E}_{q(\tau)}[\tau]                                                                   \\
-                                                       & \qquad\qquad - \frac{\lambda_0\mathbb{E}_{q(\tau)}[\tau]}{2}\left(\mathbb{E}_{q(\mu)}[\mu^2] - 2\mu_0\mathbb{E}_{q(\mu)}[\mu] + \mu_0^2\right)                                                                                      \\
-                                                       & \overset{+}{=} (a_0 - \frac{1}{2})\mathbb{E}_{q(\tau)}[\log \tau] - b_0\mathbb{E}_{q(\tau)}[\tau] - \frac{\lambda_0\mathbb{E}_{q(\tau)}[\tau]}{2}\left(\mathbb{E}_{q(\mu)}[\mu^2] - 2\mu_0\mathbb{E}_{q(\mu)}[\mu] + \mu_0^2\right) \\
+        \mathbb{E}_{q(\mu),q(\tau)}[\log p(\mu, \tau)] & = \mathbb{E}_{q(\mu),q(\tau)}\left[\log\left(\frac{b_0^{a_0} \sqrt{\lambda_0}}{\Gamma(a_0)\sqrt{2\pi}}\right) + (a_0 - \frac{1}{2})\log \tau - b_0\tau - \frac{\lambda_0\tau(\mu - \mu_0)^2}{2}\right]                                                                                              \\
+                                                       & = \log\left(\frac{b_0^{a_0} \sqrt{\lambda_0}}{\Gamma(a_0)\sqrt{2\pi}}\right) + (a_0 - \frac{1}{2})\mathbb{E}_{q(\tau)}[\log \tau] - b_0\mathbb{E}_{q(\tau)}[\tau] - \frac{\lambda_0\mathbb{E}_{q(\tau)}[\tau]}{2}\left(\mathbb{E}_{q(\mu)}[\mu^2] - 2\mu_0\mathbb{E}_{q(\mu)}[\mu] + \mu_0^2\right) \\
+                                                       & \overset{+}{=} (a_0 - \frac{1}{2})\mathbb{E}_{q(\tau)}[\log \tau] - b_0\mathbb{E}_{q(\tau)}[\tau] - \frac{\lambda_0\mathbb{E}_{q(\tau)}[\tau]}{2}\left(\mathbb{E}_{q(\mu)}[\mu^2] - 2\mu_0\mathbb{E}_{q(\mu)}[\mu] + \mu_0^2\right)                                                                 \\
     \end{split}
 \end{equation}
 
@@ -562,13 +561,11 @@ Now, we will derive the gradient estimate w.r.t. $\nu$ without Rao-Blackwellizat
 Where $z_s \sim q(z|\lambda)$. Therefore, here we have:
 \begin{equation}
     \begin{split}
-        \nabla_\nu\mathcal{L} & \approx \nabla_\nu \log q(z|\nu) \left(\log p(x, z) - \log q(z|\nu)\right)                                                                                                                                                                 \\
-                              & \approx \nabla_\nu\log \left(\frac{\exp\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)}{\theta\epsilon\sqrt{2\pi}}\right)\left(\log\left(\frac{\exp\left(-\frac{(x-\theta)^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}}\right) \right. \\
-                              & \qquad\qquad \left. +\log\left(\frac{\beta^\alpha \theta^{\alpha-1} e^{-\beta \theta}}{\Gamma(\alpha)}\right) -\log \left(\frac{\exp\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)}{\theta\epsilon\sqrt{2\pi}}\right)\right)      \\
-                              & \approx \nabla_\nu\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)\left(-\frac{(x-\theta)^2}{2\sigma^2} - \log\left(\sigma\sqrt{2\pi}\right) \right.                                                                                \\
-                              & \qquad\qquad \left. -\beta\theta +(\alpha-1)\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right) +\frac{(\log \theta - \nu)^2}{2\epsilon^2} +\log\left(\theta\epsilon\sqrt{2\pi}\right)\right)                                 \\
-                              & \approx \frac{\log \theta - \nu}{\epsilon^2}\left(\frac{(\sigma(\log \theta - \nu))^2-(\epsilon(x-\theta))^2}{2\sigma^2\epsilon^2} +\log\left(\frac{\epsilon}{\sigma}\right) \right.                                                       \\
-                              & \qquad\qquad \left. -\beta\theta +\alpha\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right)\right)
+        \nabla_\nu\mathcal{L} & \approx \nabla_\nu \log q(z|\nu) \left(\log p(x, z) - \log q(z|\nu)\right)                                                                                                                                                                                                                                                                                                                                                                           \\
+                              & \approx \nabla_\nu\log \left(\frac{\exp\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)}{\theta\epsilon\sqrt{2\pi}}\right)\left(\log\left(\frac{\exp\left(-\frac{(x-\theta)^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}}\right) +\log\left(\frac{\beta^\alpha \theta^{\alpha-1} e^{-\beta \theta}}{\Gamma(\alpha)}\right) -\log \left(\frac{\exp\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)}{\theta\epsilon\sqrt{2\pi}}\right)\right) \\
+                              & \approx \nabla_\nu\left(-\frac{(\log \theta - \nu)^2}{2\epsilon^2}\right)\left(-\frac{(x-\theta)^2}{2\sigma^2} - \log\left(\sigma\sqrt{2\pi}\right) -\beta\theta +(\alpha-1)\log\theta \right.                                                                                                                                                                                                                                                       \\
+                              & \qquad\qquad \left. +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right) +\frac{(\log \theta - \nu)^2}{2\epsilon^2} +\log\left(\theta\epsilon\sqrt{2\pi}\right)\right)                                                                                                                                                                                                                                                                              \\
+                              & \approx \frac{\log \theta - \nu}{\epsilon^2}\left(\frac{(\sigma(\log \theta - \nu))^2-(\epsilon(x-\theta))^2}{2\sigma^2\epsilon^2} +\log\left(\frac{\epsilon}{\sigma}\right) -\beta\theta +\alpha\log\theta +\log\left(\frac{\beta^\alpha}{\Gamma(\alpha)}\right)\right)
     \end{split}
 \end{equation}
 
