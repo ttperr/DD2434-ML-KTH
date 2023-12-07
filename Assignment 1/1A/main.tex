@@ -485,7 +485,10 @@ And we obtain an elbo plot :
     \label{fig:3.15.2}
 \end{figure}
 
-The code is in appendix \ref{appendix:CAVI}.
+The code and the results are in appendix \ref{appendix:CAVI}.
+As we can see in the graphs in the figure \ref{fig:3.15.1}, after each iteration the contours of the approximations by VI get closer to the exact ones. In addition we also see that the bigger the dataset is the closer the approximation will be to the exact position. Indeed the ML estimate get closer to the MAP as the dataset get bigger.
+Concerning the ELBO we can notice that it converges  rapidly in all three cases (in a single iteration) even if the improvement differs between the cases.
+
 
 \section{SVI - LDA}
 
@@ -562,8 +565,6 @@ And by using the expectations given in the Hoffman paper, we can write:
 And the entropies can be found on Wikipedia.
 
 \subsection{Question 4.19}
-The code is in appendix \ref{appendix:SVI}.
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{images/SVI-CASE1.png}
@@ -571,6 +572,10 @@ The code is in appendix \ref{appendix:SVI}.
     \caption{ELBO plot by cases}
     \label{fig:4.19}
 \end{figure}
+
+The code and the results are in appendix \ref{appendix:SVI}.
+Here we can see that in each cases the ELBO converges and that the results are a bit better with the SVI than with the CAVI algorithm. Also, SVI computation times are much shorter than those of CAVI for both cases.
+
 
 \section{BBVI}
 
