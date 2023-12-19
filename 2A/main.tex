@@ -50,6 +50,38 @@ Centering the data is a crucial step in Principal Component Analysis (PCA) becau
 
 \subsection{Question 2}
 
+TODO
+
+\subsection{Question 3}
+
+The \it{variance} of the dataset $\mathcal{Y}$ is defined as $\text{Var}(\mathcal{Y}) = \sum_{y \in \mathcal{Y}} \left\lVert y - \overline{y} \right\rVert^2_2 = \sum_{y \in \mathcal{Y}} \left\lVert y \right\rVert^2_2$ here because the data is centered. Therefore we have:
+\begin{equation}
+    \begin{split}
+        \text{Var}(\mathcal{Y}) &= \sum_{y \in \mathcal{Y}} \left\lVert y \right\rVert^2_2 \\
+        &= \sum_{y \in \mathcal{Y}} y^T y \\
+        &= \sum_{i = 1}^d (Y^T Y)_{i, i} \\
+        &= \text{Tr}(Y^T Y) \\
+        &= \text{Tr}(V \Sigma^T U^T U \Sigma V^T) \\
+        &= \text{Tr}(V \Sigma^T \Sigma V^T) \\
+        &= \text{Tr}(\Sigma^T \Sigma) \\
+        \text{Var}(\mathcal{Y}) &= \sum_{i = 1}^d \sigma_i^2
+    \end{split}
+\end{equation}
+
+\subsection{Question 4}
+
+The \it{variance} of the projected dataset after PCA is $Var(\mathcal{X}) = \sum_{x \in \mathcal{X}} \left\lVert x \right\rVert^2_2$. Where $X = W^TY$ is a $k \times n$ matrix. Therefore we have:
+\begin{equation}
+    \begin{split}
+        \text{Var}(\mathcal{X}) &= \sum_{x \in \mathcal{X}} \left\lVert x \right\rVert^2_2 \\
+        &= \sum_{x \in \mathcal{X}} x^T x \\
+        &= \sum_{i = 1}^k (X^T X)_{i, i} \\
+        &= \text{Tr}(X X^T) \\
+        &= \text{Tr}(W^T Y Y^T W) \\
+        &= \text{Tr}(W^T U \Sigma \Sigma^T U^T W) \\
+    \end{split}
+\end{equation}
+
 \newpage
 \appendix
 \section{Appendix}
