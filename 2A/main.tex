@@ -54,11 +54,10 @@ TODO
 
 \subsection{Question 3}
 
-The \it{variance} of the dataset $\mathcal{Y}$ is defined as $\text{Var}(\mathcal{Y}) = \sum_{y \in \mathcal{Y}} \left\lVert y - \overline{y} \right\rVert^2_2 = \sum_{y \in \mathcal{Y}} \left\lVert y \right\rVert^2_2$ here because the data is centered. Therefore we have:
+The \textit{variance} of the dataset $\mathcal{Y}$ is defined as $\text{Var}(\mathcal{Y}) = \sum_{y \in \mathcal{Y}} \left\lVert y - \overline{y} \right\rVert^2_2 = \sum_{y \in \mathcal{Y}} \left\lVert y \right\rVert^2_2$ here because the data is centered. Therefore we have:
 \begin{equation}
     \begin{split}
-        \text{Var}(\mathcal{Y}) &= \sum_{y \in \mathcal{Y}} \left\lVert y \right\rVert^2_2 \\
-        &= \sum_{y \in \mathcal{Y}} y^T y \\
+        \text{Var}(\mathcal{Y}) = \sum_{y \in \mathcal{Y}} \left\lVert y \right\rVert^2_2 &= \sum_{y \in \mathcal{Y}} y^T y \\
         &= \sum_{i = 1}^d (Y^T Y)_{i, i} \\
         &= \text{Tr}(Y^T Y) \\
         &= \text{Tr}(V \Sigma^T U^T U \Sigma V^T) \\
@@ -70,17 +69,43 @@ The \it{variance} of the dataset $\mathcal{Y}$ is defined as $\text{Var}(\mathca
 
 \subsection{Question 4}
 
-The \it{variance} of the projected dataset after PCA is $Var(\mathcal{X}) = \sum_{x \in \mathcal{X}} \left\lVert x \right\rVert^2_2$. Where $X = W^TY$ is a $k \times n$ matrix. Therefore we have:
+The \textit{variance} of the projected dataset after PCA is $Var(\mathcal{X}) = \sum_{x \in \mathcal{X}} \left\lVert x \right\rVert^2_2$. Where $X = W^TY$ is a $k \times n$ projected matrix. Therefore we have:
 \begin{equation}
     \begin{split}
-        \text{Var}(\mathcal{X}) &= \sum_{x \in \mathcal{X}} \left\lVert x \right\rVert^2_2 \\
-        &= \sum_{x \in \mathcal{X}} x^T x \\
+        \text{Var}(\mathcal{X}) = \sum_{x \in \mathcal{X}} \left\lVert x \right\rVert^2_2 &= \sum_{x \in \mathcal{X}} x^T x \\
         &= \sum_{i = 1}^k (X^T X)_{i, i} \\
-        &= \text{Tr}(X X^T) \\
-        &= \text{Tr}(W^T Y Y^T W) \\
-        &= \text{Tr}(W^T U \Sigma \Sigma^T U^T W) \\
+        &= \text{Tr}(X^T X) \\
+        &= \text{Tr}(Y^T W W^T Y) \\
+        &= \text{Tr}(W W^T Y Y^T) \\
+        &= \text{Tr}(W W^T V \Sigma^T \Sigma V^T) \\
+        &= \text{Tr}(W W^T \Sigma^T \Sigma) \\
+        \text{Var}(\mathcal{Y}) &= \sum_{i = 1}^k \sigma_i^2
     \end{split}
 \end{equation}
+
+\subsection{Question 5}
+The residual data points are $\mathcal{Z} = {z_1, ..., z_n}$ where $z_i = y_i - W W^T y_i$. Therefore we have:
+\begin{equation}
+    \begin{split}
+        \text{Var}(\mathcal{Z}) = \sum_{z \in \mathcal{Z}} \left\lVert z \right\rVert^2_2 &= \sum_{z \in \mathcal{Z}} z^T z \\
+        &= \sum_{y \in \mathcal{Y}} (y - W W^T y)^T (y - W W^T y) \\
+        &= \sum_{y \in \mathcal{Y}} y^T y - y^T W W^T y - (W W^T y)^T y + (W W^T y)^T W W^T y \\
+        &= \sum_{y \in \mathcal{Y}} y^T y - y^T W W^T y - y^T W W^T y + y^T W W^T W W^T y \\
+        &= \sum_{y \in \mathcal{Y}} y^T y - 2 y^T W W^T y + y^T W W^T y \\
+        &= \sum_{y \in \mathcal{Y}} y^T y - y^T W W^T y \\
+        &= \sum_{i = 1}^d \sigma_i^2 - \sum_{i = 1}^k \sigma_i^2 \\
+        \text{Var}(\mathcal{Z}) &= \sum_{i = k + 1}^d \sigma_i^2
+    \end{split}
+\end{equation}
+And therefore we conclude that variance of original data = variance explained by PCA + variance of residual data.
+
+\section{PCA vs. Johnson-Lindenstrauss random projections}
+
+TODO
+
+\section{Programming task — MDS}
+
+TODO
 
 \newpage
 \appendix
