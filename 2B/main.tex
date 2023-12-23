@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{fancyhdr} % Header
+\usepackage{lastpage}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage{float} % Floating position
+\usepackage{hyperref} % Links
+\usepackage{amsmath} % Math
+\usepackage{amssymb} % Math
+\usepackage{bbold} % Math (for indicatrice function)
+\usepackage{pdfpages} % Include PDF
+
+\graphicspath{{images/}}
+
+\newcommand{\authorFst}{Tristan Perrot}
+\newcommand{\emailFst}{\href{mailto:tristanp@kth.se}{tristanp@kth.se}}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\lhead{Assignment 2B \\ DD2434 - Machine Learning, Advanced Course}
+\rhead{\authorFst}
+\cfoot{\thepage \  / \pageref{LastPage}}
+\setlength{\headheight}{23pt}
+\setlength{\footskip}{70pt}
+
+\title{DD2434 - Machine Learning, Advanced Course \\ Assignment 2B}
+\author{\authorFst \\ \emailFst}
+\date{December 2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+  \includegraphics[scale=0.5]{KTH_logo_RGB_bla.png}
+\end{center}
+
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Multidimensional Scaling (MDS) and Isomap}
+
+\subsection{Question 1}
+Intuitively, as for PCA, in MDS we need to center the data but why twice ?
+
+\subsection{Question 2}
+
+
+\newpage
+\appendix
+
+\section{Appendix}
+
+
+\end{document}
