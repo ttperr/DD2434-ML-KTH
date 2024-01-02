@@ -100,7 +100,15 @@ The matrix formula of S is $S = \sum_{k=1}^{\infty} \alpha^k P^k$. Then, we have
 \section{Spectral graph analysis}
 
 \subsection{Question 9}
-TODO
+We have G a undirected d-regular graph therefore every vertex contributes to exactly $d$ edges.
+Let $x \in \mathbb{R}^{|V|}$, we have:
+\begin{align*}
+  x^T L x & = x^T x - \frac{1}{d} x^T A x                                                             \\
+          & = \sum_{i=1}^{|V|} x_i^2 - \frac{1}{d} \sum_{i=1}^{|V|} \sum_{j=1}^{|V|} x_i A_{ij} x_j   \\
+          & = \sum_{i=1}^{|V|} x_i^2 - \frac{2}{d} \sum_{(u,v) \in E} x_u x_v                         \\
+          & = \frac{1}{d} \sum_{(u,v) \in E} (x_u^2 + x_v^2) - \frac{2}{d} \sum_{(u,v) \in E} x_u x_v \\
+          & = \frac{1}{d} \sum_{(u,v) \in E} (x_u - x_v)^2
+\end{align*}
 
 \subsection{Question 10}
 TODO
@@ -117,6 +125,5 @@ TODO
 \appendix
 
 \section{Appendix}
-
 
 \end{document}
