@@ -81,7 +81,11 @@ Therefore, a $\mathcal{O}(n)$ independent trials are sufficient to ensure that t
 \section{Node similarity for representation learning}
 
 \subsection{Question 7}
-TODO
+The matrix \( P = D^{-1}A \) can be thought of as a transition probability matrix in a random walk on the graph, where \( D \) is the degree matrix and \( A \) is the adjacency matrix. The element \( P_{ij} \) gives the probability of moving from node \( i \) to node \( j \) in a single step of the random walk.
+Therefore, the element \( (P^k)_{ij} \) gives the probability of reaching node \( j \) from node \( i \) in exactly \( k \) steps.
+And then, the factor \( \alpha^k \) discounts the influence of longer paths in the similarity measure. Since \( 0 < \alpha < 1 \), the longer the path (i.e., the larger the value of \( k \)), the less it contributes to the overall similarity.
+By summing over all powers of \( k \), the definition of \( S_{ij} \) considers paths of all lengths, but with diminishing weights for longer paths. This infinite series converges because \( \alpha < 1 \) and \( \|P\| \leq 1 \), given that \( P \) is a probability matrix.
+The resulting similarity measure \( S_{ij} \) captures not just the direct connections (as given by the adjacency matrix \( A \)) but also the global structure of the graph by incorporating the effect of paths of all lengths.
 
 \subsection{Question 8}
 TODO
