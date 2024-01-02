@@ -88,7 +88,14 @@ By summing over all powers of \( k \), the definition of \( S_{ij} \) considers 
 The resulting similarity measure \( S_{ij} \) captures not just the direct connections (as given by the adjacency matrix \( A \)) but also the global structure of the graph by incorporating the effect of paths of all lengths.
 
 \subsection{Question 8}
-TODO
+The matrix formula of S is $S = \sum_{k=1}^{\infty} \alpha^k P^k$. Then, we have:
+\begin{align*}
+  S                & = \alpha P + \alpha^2 P^2 + \alpha^3 P^3 + \alpha^4 P^4 + \dots \\
+  \alpha S P       & = \alpha^2 P^2 + \alpha^3 P^3 + \alpha^4 P^4 + \dots            \\
+  S - \alpha S P   & = \alpha P                                                      \\
+  S (I - \alpha P) & = \alpha P                                                      \\
+  S                & = \alpha P (I - \alpha P)^{-1}
+\end{align*}
 
 \section{Spectral graph analysis}
 
