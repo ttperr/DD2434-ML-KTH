@@ -50,7 +50,9 @@ The intuitive reason that the "double centering" trick works is that, as for the
 While the double centering method center the data around the origin, the "first point" trick center the data around the first point of the dataset. Therefore the solution will be different but in MDS we are only interested in the relative position of the points and not their absolute position. Therefore the solution will be the same up to a translation.
 
 \subsection{Question 3}
-TODO
+As stated, the classical MDS algorithm when $Y$ is known is based on the eigen-decomposition of $S = Y^T Y$. Then, the singular values of $Y$ are the nonnegative square roots of the eigenvalues of $S$.
+PCA on $Y$ is based on the singular value decomposition of $Y = U \Sigma V^T$. Then, the singular values of $Y$ are the diagonal entries of $\Sigma$. Therefore the methods are equivalent because they both calculate the singular values of $Y$ to reduce the dimension by getting the directions with the highest variance.
+When $n$ is much larger than $p$ (many observations, few dimensions) PCA will tend to be more efficient because it avoids the need to calculate and store a large distance matrix.
 
 \subsection{Question 4}
 TODO
