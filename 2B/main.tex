@@ -64,7 +64,19 @@ This method is based on the fact that we need to have a fully connected graph bu
 \section{Success probability in the Johnson-Lindenstrauss lemma}
 
 \subsection{Question 6}
-TODO
+Let us denote the probability of success of an trial $p$ and the probability of failure $q = 1 - p$ and the number of trials $n$. We know that $p \geq \frac{1}{n}$. We want to have $q^k \leq 0.05$. Which means:
+\begin{align*}
+  q^k     \leq 0.05 & \Leftrightarrow \ln q^k \leq \ln 0.05                         \\
+                    & \Leftrightarrow k \geq \frac{\ln 0.05}{\ln q}                 \\
+                    & \Leftrightarrow k \geq \frac{\ln 0.05}{\ln (1 - p)}           \\
+                    & \Leftrightarrow k \geq \frac{\ln 0.05}{\ln (1 - \frac{1}{n})}
+\end{align*}
+With a high $n$ we have $\ln (1 - \frac{1}{n}) \approx -\frac{1}{n}$ and therefore:
+\begin{align*}
+  k \geq \frac{\ln 0.05}{\ln (1 - \frac{1}{n})} & \Leftrightarrow k \geq \frac{\ln 0.05}{-\frac{1}{n}} \\
+                                                & \Leftrightarrow k \geq -n \ln 0.05
+\end{align*}
+Therefore, a $\mathcal{O}(n)$ independent trials are sufficient to ensure that the probability of success is at least $95\%$.
 
 \section{Node similarity for representation learning}
 
