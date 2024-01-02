@@ -58,7 +58,8 @@ When $n$ is much larger than $p$ (many observations, few dimensions) PCA will te
 During the Isomap method, the process to obtain the neighborhood graph may yield a disconnected graph. For example, if we have two clusters of points that are well separated and a small $p$, each point will be connected to there $p$ nearest neighbors and therefore the graph will be disconnected.
 
 \subsection{Question 5}
-TODO
+Imagine as stated above a dataset with two clusters well separated that yield a disconnected graph. Now, we could search the two closest points in the separated clusters and connect them by an weighted edge of there distance in the dataset. We could repeat this if there is more than 2 clusters until the graph is connected.
+This method is based on the fact that we need to have a fully connected graph but we still want to well describe the distance between the points. Therefore, it is expected to work well in practice.
 
 \section{Success probability in the Johnson-Lindenstrauss lemma}
 
