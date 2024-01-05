@@ -114,7 +114,11 @@ Let $x \in \mathbb{R}^{|V|}$, we have:
 Since we have for any vector $x \in \mathbb{R}^{|V|}$ that $x^T L x = \frac{1}{d} \sum_{(u,v) \in E} (x_u - x_v)^2 \geq 0$. Therefore, we have that $L$ is positive semi-definite by definition. We also have that $L$ is symmetric because $L = I - \frac{1}{d} A$ and $A$ is symmetric.
 
 \subsection{Question 11}
-TODO
+A trivial vector $x_*$ is a vector that satisfies a trivial solution. Here, a vector $x_*$ composed of only the same number is a trivial vector because the value will always be 0 since $x_u = x_v$ for all $(u,v) \in E$. Therefore, a trivial vector is a vector that obviously minimize by 0 the expression $x^T L x$.
+
+If \( x_* \) minimizes the expression \( x^T L x \), this means that \( x_* \) corresponds to the eigenvector of the normalized Laplacian \( L \) associated with its smallest non-zero eigenvalue (since the smallest eigenvalue is always zero for any graph with at least one edge and its corresponding eigenvector is the constant vector).
+Therefore the eigenvector corresponding to the second smallest eigenvalue of the Laplacian (after the trivial eigenvalue of zero) provides a meaningful embedding: it captures the most significant "cut" of the graph. If you were to split the graph into two parts based on the sign of the components of this vector, it would represent a cut that minimizes the number of edges between the two parts (i.e., a sparse cut).
+Using Equation (1) from question 2B.9, we can justify that \( x_* \) as an embedding respects the graph structure since \( x^T L x \) is minimized. This indicates that the sum of the squared differences \( (x_u - x_v)^2 \) across edges is as small as possible, which implies that connected nodes have similar values in the embedding. Hence, \( x_* \) embeds nodes in a way that reflects their connectivity in the graph, with the embedding values for strongly connected nodes being close to each other and those for weakly connected nodes being farther apart.
 
 \section{Programming task}
 
