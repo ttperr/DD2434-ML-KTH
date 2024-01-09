@@ -302,3 +302,6 @@ TSWLatexianTemp*
 
 # Mac
 *.DS_Store
+
+# JetBrains
+.idea/
