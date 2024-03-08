@@ -131,7 +131,7 @@ The hyper parameters of this algorithm are :
 \end{itemize}
 
 \subsubsection{For the sampled DP mixture}
-The hyper parameters of this dataset are easy to set, as we now the underlying structure of the data.
+The hyper parameters of this dataset are easy to set, as we know the underlying structure of the data.
 Hence, we will have :
 
 \begin{itemize}
@@ -214,6 +214,52 @@ Firstly, we can see that the entropy converges quickly. It takes approximately 1
 
 Secondly, now on the simulated data, we can see that the algorithm gives good results on the figure \ref{fig:alg_last}, similarly to that of the paper (figure \ref{fig:alg_paper}) but it seems to converge a little bit slower. Indeed, in the paper, they stopped the algorithm to 5 iterations and even if we had great result at 5 iterations we did 30 iterations to get better results.
 The approximated density fits the data closely. Indeed, we can see that the algorithm well identifies 3/4 clusters. We can see that in areas where the points are less agglomerated, the more the contours turn to violet, indicating a lower density of expected values, and vice versa. Like in the paper, for the cluster of points that is between two well separated clusters, we can see that the density is combining like it is expected. Moreover, the algorithm predicts two well defined clusters easily identified when we see the dataset. Overall the algorithm works well and was used to create an accurate reproduction of the results obtained in the paper.
+
+\subsection{Held-out log-likelihood}
+One last step to evaluate the performances of the model is to compute its held-out log-likelihood and its training time.
+
+As done in the paper, we did it for data whose the dimension goes from 5 to 50. Thus, we needed to generate data points with higher dimension than 2. For that, we used the function \textbf{multivariate\_normal} from \textbf{numpy.random}, and we adjusted the dimension of the mean and the covariance matrix. We also made sure that our CAVI algorithm could be used for higher dimension than 2.
+
+To build the held-out sets, we used the train set to which we added a Gaussian noise, with two times the variance of the training set.
+
+An example of held out set is shown below, in two dimensions :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{images/held-out_set.png}
+    \caption{Example of training and testing sets.}
+\end{figure}
+
+
+The steps done to compute the held-out likelihood and the training time of the model (given the dimension of the input data) are summed up below :
+
+\begin{itemize}
+    \item Generate 100 samples of a multivariate Gaussian with the same parameters as above (zero mean and fixed variance of 0.3) for the dimensions 5, 10, 20, 30, 40 and 50,
+    \item Perform the CAVI algorithm and compute the estimated density of the data for each dimension, storing the running time,
+    \item Generate a held-out set by adding a Gaussian noise to the training set,
+    \item Compute the log-density for each point of the test set using the estimated density,
+    \item Get the mean of all the computed log-density to get the log-likelihood of the test set.
+\end{itemize}
+
+We get the following results concerning the running time and the held-out likelihood :
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{images/running time.png}
+        \caption{Running time}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{images/held-out likelihood.png}
+        \caption{Held-out likelihood}
+    \end{minipage}
+\end{figure}
+
+We can observe that the running time tends to increase with the dimension of the input data. However, it barely reaches 10 seconds, even for an input data with 50 dimensions. It confirms the results of the paper, which was showing that the variational method was a lot faster to train than the two other tested methods. \\
+Concerning the held-out likelihood, we observe the same decreasing trend as in the paper with respect to the dimension. The values of the held-out log-likelihood are different though. It seems normal as the computations details of the held-out likelihood are not precised in the paper. It might take into account constants that we don't compute, for example.
+
 
 \section{Discussion}
 
