@@ -1,3 +1,3 @@
 # DD2434-ML-KTH
 
-Private repo of the DD2434 - ML Advanced projects at KTH.
+DD2434 - Machine Learning Advanced projects at KTH.
